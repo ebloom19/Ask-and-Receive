@@ -74,7 +74,7 @@
                 <h1>Ask & Receive</h1>
         
                 <form class="form-group" method="post" action="{{ route('scraper') }}" accept-charset="UTF-8">
-                    {{ csrf_field() }}
+                    @csrf
 
                     <input type="text" name="streetNumber" placeholder="Street Number">
                     <input type="number" name="unitNumber" placeholder="Unit Number">
