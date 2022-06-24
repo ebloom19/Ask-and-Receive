@@ -16,11 +16,13 @@ use App\Http\Controllers\ScraperController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ScraperController::class, 'index']);
 
-Route::post('/saveItemRoute', [ScraperController::class, 'scraper'])->name('scraper');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('scraper', [ScraperController::class, 'scraper'])->name('scraper');
+Route::get('/saveItemRoute', [ScraperController::class, 'scraper'])->name('scraper');
+
+Route::post('scraper', [ScraperController::class, 'scraper'])->name('scraper');
 

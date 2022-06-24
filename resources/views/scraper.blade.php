@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +24,7 @@
 <body>
     <div class="cards">
         @foreach ($data as $address => $details)
+            {{ $passedString }}
             <div class="propertyCard">
                 <h3>{{ $address }}</h3>
                 @foreach ($details['propertyInfo'] as $feature)                    
@@ -37,4 +38,4 @@
         @endforeach
     </div>
 </body>
-</html>
+</html> --}}

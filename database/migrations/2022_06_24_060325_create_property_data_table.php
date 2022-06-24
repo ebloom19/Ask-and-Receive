@@ -13,16 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('list_items', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('is_complete');
-            $table->timestamps();
-        });
-
         Schema::create('property_data', function (Blueprint $table) {
             $table->id();
-            $table->json('property');
             $table->timestamps();
         });
     }
@@ -34,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('list_items');
+        Schema::dropIfExists('property_data');
     }
 };
