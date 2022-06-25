@@ -79,7 +79,7 @@ class ScraperController extends Controller
             $page = $client->request('GET', $url);
 
             $page->filter('.property')->each(function ($item) {
-                if(str_contains($item->filter('.address')->text(), $this->focusAddress)) {
+                if(substr($item->filter('.address')->text(), 0, strlen($this->focusAddress)) === $this->focusAddress) {
                     $propertyDetails = array();
         
                     $propertyDetails["propertyInfo"] = $item->filter('.property-meta')->each(function ($detail) {
@@ -118,7 +118,7 @@ class ScraperController extends Controller
             $page = $client->request('GET', $url);
 
             $page->filter('.property')->each(function ($item) {
-                if(str_contains($item->filter('.address')->text(), $this->focusAddress)) {
+                if(substr($item->filter('.address')->text(), 0, strlen($this->focusAddress)) === $this->focusAddress) {
                     $propertyDetails = array();
         
                     $propertyDetails["propertyInfo"] = $item->filter('.property-meta')->each(function ($detail) {
@@ -145,7 +145,7 @@ class ScraperController extends Controller
         $propertyData = $this->results;
 
 
-        // return $url;
+        // return $_SERVER['REQUEST_URI'];
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes'));
         // return view('scraper');

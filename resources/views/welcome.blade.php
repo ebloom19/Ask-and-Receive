@@ -6,6 +6,8 @@
 
         <title>Laravel</title>
 
+        <script src="{{ mix('/js/app.js') }}"></script>
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
         <!-- Fonts -->
@@ -30,6 +32,10 @@
             .mainForm {
                 display: flex;
                 flex-direction: column;
+            }
+
+            .noReuslts {
+                color: white;
             }
 
             .card {
@@ -66,61 +72,77 @@
             .noResults {
                 color: white;
             }
+
+            .formMain {
+                display: flex;
+
+            }
+
+            .formMain > input, .formMain > select, .formMain > button {
+                margin: 10px 5px;
+            }
         </style>
     </head>
     <body class="antialiased">
-        <div class="mainContainer">
-            <div class="mainForm">
-                <h1>Ask & Receive</h1>
-        
-                <form class="form-group" method="post" action="{{ route('scraper') }}" accept-charset="UTF-8">
-                    @csrf
-
-                    <input type="text" name="streetNumber" placeholder="Street Number">
-                    <input type="number" name="unitNumber" placeholder="Unit Number">
-                    <input type="text" name="streetName" placeholder="Street Name">
-
-                    <select name="streetType">
-                        @foreach ($streetTypes as $st)
-                            <option value={{ $st }}>{{ $st }}</option>
-                        @endforeach
-                    </select>
-
-                    <input type="text" name="suburb" placeholder="Suburb">
-
-                    <select name="state">
-                        @foreach ($states as $st => $state)
-                            <option value={{ $st }}>{{ $st }}</option>
-                        @endforeach
-                    </select>
-
-                    <input type="number" name="postCode" placeholder="Post Code">
-
-                    <button type="submit">Submit</button>
-
-                </form>
-            </div>
-            <div class="cards">
-                @isset($propertyData)     
-                    @foreach ($propertyData as $address => $details)
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ $address }}</h3>
-                                @foreach ($details['propertyInfo'] as $feature)                    
-                                    <p class="card-text">{{ $feature }}</p>
+        <div id="app">
+            @yield('content')
+            <div class="mainContainer">
+                <div class="mainForm">
+                    <h1>Ask & Receive</h1>
+            
+                    <form class="form-group" method="post" action="{{ route('scraper') }}" accept-charset="UTF-8">
+                        @csrf
+    
+                        <div class="formMain">
+                            <input type="text" name="streetNumber" placeholder="Street Number">
+                            <input type="number" name="unitNumber" placeholder="Unit Number">
+                            <input type="text" name="streetName" placeholder="Street Name">
+                            <select name="streetType">
+                                @foreach ($streetTypes as $st)
+                                    <option value={{ $st }}>{{ $st }}</option>
                                 @endforeach
-                                <h4 class="card-subtitle mb-2 text-muted">Listing History:</h4>
-                                @foreach ($details['listingHistory'] as $info)
-                                    <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
-                                @endforeach
-                            </div>
+                            </select>
                         </div>
-                    @endforeach
-                @endisset
-                @if (empty($propertyData))
-                    <p class="noReuslts">No Results Found</p>
-                @endif
+    
+                        <div class="formMain">
+                            <input type="text" name="suburb" placeholder="Suburb">
+        
+                            <select name="state">
+                                @foreach ($states as $st => $state)
+                                    <option value={{ $st }}>{{ $st }}</option>
+                                @endforeach
+                            </select>
+        
+                            <input type="number" name="postCode" placeholder="Post Code">
+                            <button type="submit">Submit</button>
+                        </div>
+                        
+                    </form>
+                    <fingerprint-spinner></fingerprint-spinner>
+                </div>
+                <div class="cards">
+                    @isset($propertyData)     
+                        @foreach ($propertyData as $address => $details)
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{ $address }}</h3>
+                                    @foreach ($details['propertyInfo'] as $feature)                    
+                                        <p class="card-text">{{ $feature }}</p>
+                                    @endforeach
+                                    <h4 class="card-subtitle mb-2 text-muted">Listing History:</h4>
+                                    @foreach ($details['listingHistory'] as $info)
+                                        <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                    @endisset
+                    @if (empty($propertyData) && $_SERVER['REQUEST_URI'] != '/')
+                        <p class="noReuslts">No Results Found</p>
+                    @endif
+                </div>
             </div>
         </div>
+        <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>
