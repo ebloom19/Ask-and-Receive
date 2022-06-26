@@ -167,7 +167,7 @@ class ScraperController extends Controller
                     $response = file_get_contents($url);
                     $response = json_decode($response, true);
 
-                    $suburb = strtoupper($this->searchTerms['suburb']);
+                    $suburb = strtoupper(str_replace('%20', ' ', $this->searchTerms['suburb']));
 
                     if(isset($this->searchTerms['unitNumber'])) {
                         $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
