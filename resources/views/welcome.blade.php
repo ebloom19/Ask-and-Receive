@@ -168,6 +168,8 @@
                                         </div>
                                     @endif
                                 </div>
+                                <p>Scarborough View:</p>
+                                <p>Median Sale Price <small>{{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'House'}} : ${{ $investorMetrics['investor_metrics']['median_sold_price'] }}</small></p>
                             </div>
                         </div>
                     @endforeach

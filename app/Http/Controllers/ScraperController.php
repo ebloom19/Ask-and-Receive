@@ -184,15 +184,29 @@ class ScraperController extends Controller
         // $data->property = $this->results;
         // $data->save();
 
+        // "investor_metrics":{
+        //     "median_sold_price":830000,
+        //     "median_sold_price_five_years_ago":755000,
+        //     "median_rental_price":620,
+        //     "rental_yield":0.0388434,
+        //     "annual_growth":0.019,
+        //     "rental_demand":951.37,
+        //     "rental_properties":126,
+        //     "sold_properties":128,
+        // }      
+
         $propertyData = $this->results;
+        $investorMetrics = $this->investorMetrics;
+        $numberOfBeds = $this->numberOfBeds;
+        $searchTerms = $this->searchTerms;
 
         // Remove broken info 
 
 
-        return $this->investorMetrics;
+        // return $this->investorMetrics;
         // return $propertyData;
 
-        return view('welcome', compact('propertyData', 'states', 'streetTypes'));
+        return view('welcome', compact('propertyData', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
         // return view('scraper');
     }
 }
