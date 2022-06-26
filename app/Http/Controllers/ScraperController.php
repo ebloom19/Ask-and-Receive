@@ -189,8 +189,8 @@ class ScraperController extends Controller
         // Remove broken info 
 
 
-        // return $this->numberOfBeds;
-        return $propertyData;
+        return $this->numberOfBeds;
+        // return $propertyData;
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes'));
         // return view('scraper');
