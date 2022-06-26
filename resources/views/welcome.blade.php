@@ -170,7 +170,7 @@
                                 </div>
 
                                 @php    
-                                    if(isset($investorMetrics)) {
+                                    if(isset($investorMetrics['investor_metrics'])) {
                                         $median = $investorMetrics['investor_metrics']['median_sold_price'];
                                         $medain5YAgo = $investorMetrics['investor_metrics']['median_sold_price_five_years_ago'];
     
