@@ -20,6 +20,14 @@ class ScraperController extends Controller
 
     private $focusAddress = '';
 
+    private $searchTerms = [];
+
+    private $investorMetrics = [];
+
+    private $proxy = '';
+
+    private $numberOfBeds = '';
+
     private $states = [
         "NSW" => "New South Wales",
         "VIC" => "Victoria",
@@ -48,19 +56,31 @@ class ScraperController extends Controller
         $states = $this->states;
         $streetTypes = $this->streetTypes;
 
+        $this->proxy = env('PROXY');
 
         $streetNumber = $request->input('streetNumber');
         $unitNumber = $request->input('unitNumber');
         $streetName = strtoupper($request->input('streetName'));
+        $streetType = $request->input('streetType');
         $suburb = str_replace(' ', '%20', $request->input('suburb'));
         $state = strtoupper($request->input('state'));
         $postCode = $request->input('postCode');
+
+        $this->searchTerms = array (
+            "streetNumber"=>$streetNumber,
+            "unitNumber"=>$unitNumber,
+            "streetName"=>$streetName,
+            "streetType"=>$streetType,
+            "suburb"=>$suburb,
+            "state"=>$state,
+            "postCode"=>$postCode
+        );
 
         $this->focusAddress = "{$streetNumber} ";
 
         $client = new Client();
         $url = "https://www.oldlistings.com.au/real-estate/{$state}/{$suburb}/{$postCode}/buy/1/{$streetName}";
-        $page = $client->request('GET', $url);
+        $page = $client->request('GET', $url, ['proxy' => env('PROXY')]);
 
         $resultPages = $page->filter('.pagination > li')->each(function ($result) {
             return $result->text();
@@ -76,7 +96,7 @@ class ScraperController extends Controller
         foreach($resultPages as $page) {
             $client = new Client();
             $url = "https://www.oldlistings.com.au/real-estate/{$state}/{$suburb}/{$postCode}/buy/{$page}/{$streetName}";
-            $page = $client->request('GET', $url);
+            $page = $client->request('GET', $url, ['proxy' => env('PROXY')]);
 
             $page->filter('.property')->each(function ($item) {
                 if(substr($item->filter('.address')->text(), 0, strlen($this->focusAddress)) === $this->focusAddress) {
@@ -84,6 +104,11 @@ class ScraperController extends Controller
         
                     $propertyDetails["propertyInfo"] = $item->filter('.property-meta')->each(function ($detail) {
                         $propertyDetails[$detail->filter('span')->text()] = $detail->text();
+
+                        if(str_contains($detail->text(), 'Bed')) {
+                            $this->numberOfBeds = preg_replace('/[^0-9]/', '', $detail->text());
+                        };
+
                         return $detail->text();
                     });
         
@@ -102,7 +127,7 @@ class ScraperController extends Controller
 
         $client = new Client();
         $urlRent = "https://www.oldlistings.com.au/real-estate/{$state}/{$suburb}/{$postCode}/rent/1/{$streetName}";
-        $page = $client->request('GET', $urlRent);
+        $page = $client->request('GET', $urlRent, ['proxy' => env('PROXY')]);
 
         $resultPages = $page->filter('.pagination > li')->each(function ($result) {
             return $result->text();
@@ -115,7 +140,7 @@ class ScraperController extends Controller
         foreach($resultPages as $page) {
             $client = new Client();
             $url = "https://www.oldlistings.com.au/real-estate/{$state}/{$suburb}/{$postCode}/rent/{$page}/{$streetName}";
-            $page = $client->request('GET', $url);
+            $page = $client->request('GET', $url, ['proxy' => env('PROXY')]);
 
             $page->filter('.property')->each(function ($item) {
                 if(substr($item->filter('.address')->text(), 0, strlen($this->focusAddress)) === $this->focusAddress) {
@@ -136,6 +161,19 @@ class ScraperController extends Controller
                         $this->results[$item->filter('.address')->text()] = $propertyDetails + $this->results[$item->filter('.address')->text()]
                         :
                         $this->results["{$item->filter('.address')->text()} - Rent"] = $propertyDetails;
+
+                    // Call to get Suburb data
+                    $url = "https://investor-api.realestate.com.au/v2/states/{$this->searchTerms["state"]}/suburbs/{$this->searchTerms["suburb"]}.json";
+                    $response = file_get_contents($url);
+                    $response = json_decode($response, true);
+
+                    $suburb = strtoupper($this->searchTerms['suburb']);
+
+                    if(isset($this->searchTerms['unitNumber'])) {
+                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberO['']];
+                    } else {
+                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"];
+                    }
                     
                 }
     
@@ -151,11 +189,8 @@ class ScraperController extends Controller
         // Remove broken info 
 
 
-
-
-
-
-        // return $propertyData;
+        // return $this->numberOfBeds;
+        return $propertyData;
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes'));
         // return view('scraper');
