@@ -169,15 +169,14 @@
                                     @endif
                                 </div>
 
-                                {{
+                                @php    
                                     $median = $investorMetrics['investor_metrics']['median_sold_price'];
                                     $medain5YAgo = $investorMetrics['investor_metrics']['median_sold_price_five_years_ago'];
 
                                     $percentage = $median - $median5YAgo;
                                     $percentage = $median5YAgo / $he;
-
-
-                                }}
+                                @endphp
+              
                                 <h5 class="card-subtitle mb-2 text-muted">Scarborough View:</h5>
                                 <p class="card-text">Median Sale Price <small> - {{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'House'}}</small>: ${{ $investorMetrics['investor_metrics']['median_sold_price'] }}</p>
                                 <p class="card-text">Median Sale Price has risen by {{ $percentage }}% <small> - for {{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'House'}}</small></p>
