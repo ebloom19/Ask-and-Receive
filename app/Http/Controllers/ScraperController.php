@@ -173,7 +173,7 @@ class ScraperController extends Controller
                         if(isset($this->searchTerms['unitNumber'])) {
                             $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
                         } else {
-                            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds] ? $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds] : $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["ALL"];
+                            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds] || $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["ALL"];
                         }
                     }
                     
@@ -205,7 +205,7 @@ class ScraperController extends Controller
         // Remove broken info 
 
 
-        return $this->numberOfBeds;
+        return $this->$propertyData;
         // return $propertyData;
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
