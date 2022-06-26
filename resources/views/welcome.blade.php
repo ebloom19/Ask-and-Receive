@@ -170,11 +170,13 @@
                                 </div>
 
                                 @php    
-                                    $median = $investorMetrics['investor_metrics']['median_sold_price'];
-                                    $medain5YAgo = $investorMetrics['investor_metrics']['median_sold_price_five_years_ago'];
-
-                                    $percentage = $median - $medain5YAgo;
-                                    $percentage = $medain5YAgo / $percentage;
+                                    if(isset($investorMetrics)) {
+                                        $median = $investorMetrics['investor_metrics']['median_sold_price'];
+                                        $medain5YAgo = $investorMetrics['investor_metrics']['median_sold_price_five_years_ago'];
+    
+                                        $percentage = $median - $medain5YAgo;
+                                        $percentage = $medain5YAgo / $percentage;
+                                    }
                                 @endphp
               
                                 <h5 class="card-subtitle mb-2 text-muted">Scarborough View: <small> - for {{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'Homes'}}</small></h5>
