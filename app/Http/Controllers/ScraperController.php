@@ -121,17 +121,22 @@ class ScraperController extends Controller
                 if(substr($item->filter('.address')->text(), 0, strlen($this->focusAddress)) === $this->focusAddress) {
                     $propertyDetails = array();
         
-                    $propertyDetails["propertyInfo"] = $item->filter('.property-meta')->each(function ($detail) {
-                        $propertyDetails[$detail->filter('span')->text()] = $detail->text();
-                        return $detail->text();
-                    });
+                    // Need to account for if rental only found include details
+                    // $propertyDetails["propertyInfo"] = $item->filter('.property-meta')->each(function ($detail) {
+                    //     $propertyDetails[$detail->filter('span')->text()] = $detail->text();
+                    //     return $detail->text();
+                    // });
         
-                    $propertyDetails["listingHistory"] = $item->filter('li')->each(function ($listing) {
+                    $propertyDetails["rentalHistory"] = $item->filter('li')->each(function ($listing) {
                         // $propertyDetails[$listing->filter('span')->text()] = $listing->text();
                         return $listing->text() != $listing->filter('span')->text() ? [$listing->filter('span')->text(), str_replace($listing->filter('span')->text(), '', $listing->text())] : [$listing->filter('span')->text()];
                     });
+
+                    array_key_exists($item->filter('.address')->text(), $this->results) ? 
+                        $this->results[$item->filter('.address')->text()] = $propertyDetails + $this->results[$item->filter('.address')->text()]
+                        :
+                        $this->results["{$item->filter('.address')->text()} - Rent"] = $propertyDetails;
                     
-                    $this->results["{$item->filter('.address')->text()} - Rent"] = $propertyDetails;
                 }
     
             });
@@ -141,11 +146,16 @@ class ScraperController extends Controller
         // $data->property = $this->results;
         // $data->save();
 
-
         $propertyData = $this->results;
 
+        // Remove broken info 
 
-        // return $_SERVER['REQUEST_URI'];
+
+
+
+
+
+        // return $propertyData;
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes'));
         // return view('scraper');
