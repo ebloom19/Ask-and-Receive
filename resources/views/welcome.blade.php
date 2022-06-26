@@ -178,8 +178,8 @@
                                 @endphp
               
                                 <h5 class="card-subtitle mb-2 text-muted">Scarborough View:</h5>
-                                <p class="card-text">Median Sale Price <small> - {{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'House'}}</small>: ${{ $investorMetrics['investor_metrics']['median_sold_price'] }}</p>
-                                <p class="card-text">Median Sale Price has risen by {{ $percentage }}% <small> - for {{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'House'}}</small></p>
+                                <p class="card-text">Median Sale Price : ${{ trim(strrev(chunk_split(strrev($investorMetrics['investor_metrics']['median_sold_price']), 3, ' '))) }} <small> - {{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'Homes'}}</small></p>
+                                <p class="card-text">Median Sale Price has risen by {{ round($percentage, 3) }}% <small> - for {{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'Homes'}}</small></p>
 
                             </div>
                         </div>
