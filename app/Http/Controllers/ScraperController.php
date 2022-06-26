@@ -169,13 +169,13 @@ class ScraperController extends Controller
 
                     $suburb = strtoupper(str_replace('%20', ' ', $this->searchTerms['suburb']));
 
-                    if(isset($this->numberOfBeds)) {
-                        if(isset($this->searchTerms['unitNumber'])) {
-                            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
-                        } else {
-                            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds] || $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["ALL"];
-                        }
-                    }
+                    // if(isset($this->numberOfBeds)) {
+                    //     if(isset($this->searchTerms['unitNumber'])) {
+                    //         $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
+                    //     } else {
+                    //         $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds] || $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["ALL"];
+                    //     }
+                    // }
                     
                 }
     
