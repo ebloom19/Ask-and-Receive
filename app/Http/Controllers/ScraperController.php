@@ -146,11 +146,13 @@ class ScraperController extends Controller
                 if(substr($item->filter('.address')->text(), 0, strlen($this->focusAddress)) === $this->focusAddress) {
                     $propertyDetails = array();
         
-                    // Need to account for if rental only found include details
-                    // $propertyDetails["propertyInfo"] = $item->filter('.property-meta')->each(function ($detail) {
-                    //     $propertyDetails[$detail->filter('span')->text()] = $detail->text();
-                    //     return $detail->text();
-                    // });
+                    // Gets property details if none are found for sale listings
+                    if(!isset($propertyDetails["propertyInfo"])) {          
+                        $propertyDetails["propertyInfo"] = $item->filter('.property-meta')->each(function ($detail) {
+                            $propertyDetails[$detail->filter('span')->text()] = $detail->text();
+                            return $detail->text();
+                        });
+                    }
         
                     $propertyDetails["rentalHistory"] = $item->filter('li')->each(function ($listing) {
                         // $propertyDetails[$listing->filter('span')->text()] = $listing->text();
