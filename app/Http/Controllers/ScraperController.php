@@ -213,7 +213,7 @@ class ScraperController extends Controller
         // Remove broken info 
 
 
-        return "{$investorMetrics} AND {$numberOfBeds}";
+        return [$investorMetrics, $numberOfBeds];
         // return $propertyData;
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
