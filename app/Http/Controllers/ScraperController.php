@@ -173,8 +173,10 @@ class ScraperController extends Controller
                         $this->numberOfBeds = "5+";
                     } elseif(!isset($this->numberOfBeds)) {
                         $this->numberOfBeds = "ALL";
-                    } elseif($this->numberOfBeds == 1 && !isset($this->searchTerms['unitNumber']) == false) {
-                        $this->numberOfBeds = "ALL";
+                    } elseif($this->numberOfBeds == 1) {
+                        if(!isset($this->searchTerms['unitNumber'])) {
+                            $this->numberOfBeds = "ALL";
+                        }
                     } 
 
                     if(isset($this->searchTerms['unitNumber'])) {
@@ -211,7 +213,7 @@ class ScraperController extends Controller
         // Remove broken info 
 
 
-        return $numberOfBeds;
+        // return $numberOfBeds;
         // return $propertyData;
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
