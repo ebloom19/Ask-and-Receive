@@ -50,7 +50,7 @@ class ScraperController extends Controller
         return view('welcome', compact('states', 'streetTypes'));
     }
 
-    public function scraper(Request $request){
+    public function results(Request $request){
         // Log::info(json_encode($request->al()));
 
         $states = $this->states;

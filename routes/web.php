@@ -22,7 +22,7 @@ Route::get('/', [ScraperController::class, 'index']);
 //     return view('welcome');
 // });
 
-Route::get('/saveItemRoute', [ScraperController::class, 'scraper'])->name('scraper');
+Route::get('/saveItemRoute', [ScraperController::class, 'results'])->name('results');
 
-Route::post('scraper', [ScraperController::class, 'scraper'])->name('scraper');
+Route::post('results', [ScraperController::class, 'results'])->name('results');
 

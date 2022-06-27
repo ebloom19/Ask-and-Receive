@@ -105,7 +105,7 @@
             <div class="mainForm">
                 <h1>Ask & Receive</h1>
         
-                <form class="form-group" method="post" action="{{ route('scraper') }}" accept-charset="UTF-8">
+                <form class="form-group" method="post" action="{{ route('results') }}" accept-charset="UTF-8">
                     @csrf
 
                     <div class="formMain">
