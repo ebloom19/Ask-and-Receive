@@ -139,7 +139,7 @@
             </div>
             <div class="cards">
                 @isset($propertyData)     
-                    @foreach (array_pop($propertyData) as $address => $details)
+                    @foreach ([$propertyData[0]] as $address => $details)
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title">{{ $address }}</h3>
