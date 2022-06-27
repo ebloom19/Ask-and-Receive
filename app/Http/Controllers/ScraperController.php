@@ -173,7 +173,7 @@ class ScraperController extends Controller
                         $this->numberOfBeds = "5+";
                     } elseif(!isset($this->numberOfBeds)) {
                         $this->numberOfBeds = "ALL";
-                    } elseif($this->numberOfBeds == 1 && !isset($this->searchTerms['unitNumber']) {
+                    } elseif($this->numberOfBeds == 1 && !isset($this->searchTerms['unitNumber'])) {
                         $this->numberOfBeds = "ALL";
                     } 
 
