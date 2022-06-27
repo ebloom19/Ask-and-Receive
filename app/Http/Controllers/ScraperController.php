@@ -184,6 +184,8 @@ class ScraperController extends Controller
                     } else {
                         $this->investorMetrics = "{$suburb}-{$this->searchTerms['postCode']}";
                     }
+
+                    $this->investorMetrics = $url;
                     
                 }
     
