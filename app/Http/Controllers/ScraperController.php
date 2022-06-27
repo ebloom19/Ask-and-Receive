@@ -169,12 +169,10 @@ class ScraperController extends Controller
 
                     $suburb = strtoupper(str_replace('%20', ' ', $this->searchTerms['suburb']));
 
-                    $numberOfBeds = $this->numberOfBeds;
-
-                    if($numberOfBeds >= 5) {
-                        $numberOfBeds = "5+";
-                    } elseif(!isset($numberOfBeds)) {
-                        $numberOfBeds = "ALL";
+                    if($this->numberOfBeds >= 5) {
+                        $this->numberOfBeds = "5+";
+                    } elseif(!isset($this->numberOfBeds) || $this->numberOfBeds == 1 && !isset($this->searchTerms['unitNumber'])) {
+                        $this->numberOfBeds = "ALL";
                     }
 
                     if(isset($this->searchTerms['unitNumber'])) {
