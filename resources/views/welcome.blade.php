@@ -180,7 +180,7 @@
                                 @endphp
               
                                 @if (isset($investorMetrics['investor_metrics']))      
-                                    <p class="card-subtitle mb-2 text-muted">Scarborough View: <small> - for {{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'Homes'}}</small></p>
+                                    <p class="card-subtitle mb-2 text-muted">Scarborough View: <small> - for {{$numberOfBeds == "ALL" ? 'all' : "{$numberOfBeds} Bedroom"}}  {{isset($searchTerms['unitNumber']) ? 'Units' : 'Houses'}}</small></p>
                                     <p class="card-text">Average Sale Price : ${{ trim(strrev(chunk_split(strrev($investorMetrics['investor_metrics']['median_sold_price']), 3, ','))) }}</p>
                                     <p class="card-text">Average Sale Price has risen by {{ round($percentage, 2) }}%</p>
                                     <p class="card-text">Average Rent : ${{ $investorMetrics['investor_metrics']['median_rental_price'] }} Weekly</p>
