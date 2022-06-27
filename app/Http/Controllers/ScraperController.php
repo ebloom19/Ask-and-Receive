@@ -180,9 +180,9 @@ class ScraperController extends Controller
                     } 
 
                     if(isset($this->searchTerms['unitNumber'])) {
-                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][strval($this->numberOfBeds)];
+                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
                     } else {
-                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"];
+                        $this->investorMetrics = "{$suburb}-{$this->searchTerms['postCode']}";
                     }
                     
                 }
