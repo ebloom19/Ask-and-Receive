@@ -181,9 +181,9 @@
               
                                 @if (isset($investorMetrics['investor_metrics']))      
                                     <p class="card-subtitle mb-2 text-muted">Scarborough View: <small> - for {{$numberOfBeds}} Bedroom {{isset($searchTerms['unitNumber']) ? 'Units' : 'Homes'}}</small></p>
-                                    <p class="card-text">Average Sale Price : ${{ trim(strrev(chunk_split(strrev($investorMetrics['investor_metrics']['median_sold_price']), 3, ' '))) }}</p>
+                                    <p class="card-text">Average Sale Price : ${{ trim(strrev(chunk_split(strrev($investorMetrics['investor_metrics']['median_sold_price']), 3, ','))) }}</p>
                                     <p class="card-text">Average Sale Price has risen by {{ round($percentage, 2) }}%</p>
-                                    <p class="card-text">Average Rent : ${{ $investorMetrics['investor_metrics']['median_rental_price'] }}</p>
+                                    <p class="card-text">Average Rent : ${{ $investorMetrics['investor_metrics']['median_rental_price'] }} Weekly</p>
                                     <p class="card-text">Rental Yeild : {{ round((float)$investorMetrics['investor_metrics']['rental_yield'] * 100) }}%</p>
                                 @endif
                                 
