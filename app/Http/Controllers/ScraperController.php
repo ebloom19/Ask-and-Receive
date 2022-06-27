@@ -208,7 +208,7 @@ class ScraperController extends Controller
         //     "sold_properties":128,
         // }      
 
-        $propertyData = $this->results;
+        $propertyData = $this->results[0];
         $investorMetrics = $this->investorMetrics;
         $numberOfBeds = $this->numberOfBeds;
         $searchTerms = $this->searchTerms;
@@ -217,7 +217,7 @@ class ScraperController extends Controller
 
 
         // return [$investorMetrics, $numberOfBeds];
-        return $propertyData;
+        // return $propertyData;
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
         // return view('scraper');
