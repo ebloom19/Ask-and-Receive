@@ -173,14 +173,14 @@ class ScraperController extends Controller
                         $this->numberOfBeds = "5+";
                     } elseif(!isset($this->numberOfBeds)) {
                         $this->numberOfBeds = "ALL";
-                    } elseif($this->numberOfBeds == 1 && !isset($this->searchTerms['unitNumber'])) {
+                    } elseif($this->numberOfBeds == 1 && !isset($this->searchTerms['unitNumber']) == false) {
                         $this->numberOfBeds = "ALL";
                     } 
 
                     if(isset($this->searchTerms['unitNumber'])) {
-                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$numberOfBeds];
+                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
                     } else {
-                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$numberOfBeds];
+                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds];
                     }
                     
                 }
