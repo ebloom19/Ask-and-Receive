@@ -177,7 +177,7 @@ class ScraperController extends Controller
                         } else {
                             // $this->investorMetrics = "{$suburb}-{$this->searchTerms['postCode']}";
                             // $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds] || $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["ALL"];
-                            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["{$numberOfBeds}"];
+                            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["3"];
                         }
                     }
                     
