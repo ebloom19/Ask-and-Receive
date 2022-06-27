@@ -162,35 +162,36 @@ class ScraperController extends Controller
                         :
                         $this->results["{$item->filter('.address')->text()} - Rent"] = $propertyDetails;
 
-                    // Call to get Suburb data
-                    $url = "https://investor-api.realestate.com.au/v2/states/{$this->searchTerms["state"]}/suburbs/{$this->searchTerms["suburb"]}.json";
-                    $response = file_get_contents($url);
-                    $response = json_decode($response, true);
-
-                    $suburb = strtoupper(str_replace('%20', ' ', $this->searchTerms['suburb']));
-
-                    if($this->numberOfBeds >= 5) {
-                        $this->numberOfBeds = "5+";
-                    } elseif(!isset($this->numberOfBeds)) {
-                        $this->numberOfBeds = "ALL";
-                    } elseif($this->numberOfBeds == 1) {
-                        if(!isset($this->searchTerms['unitNumber'])) {
-                            $this->numberOfBeds = "ALL";
-                        }
-                    } 
-
-                    if(isset($this->searchTerms['unitNumber'])) {
-                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
-                    } else {
-                        $this->investorMetrics = "{$suburb}-{$this->searchTerms['postCode']}";
-                    }
-
-                    $this->investorMetrics = $url;
-                    
                 }
     
             });
         }
+
+        // Call to get Suburb data
+        $url = "https://investor-api.realestate.com.au/v2/states/{$this->searchTerms["state"]}/suburbs/{$this->searchTerms["suburb"]}.json";
+        $response = file_get_contents($url);
+        $response = json_decode($response, true);
+
+        $suburb = strtoupper(str_replace('%20', ' ', $this->searchTerms['suburb']));
+
+        if($this->numberOfBeds >= 5) {
+            $this->numberOfBeds = "5+";
+        } elseif(!isset($this->numberOfBeds)) {
+            $this->numberOfBeds = "ALL";
+        } elseif($this->numberOfBeds == 1) {
+            if(!isset($this->searchTerms['unitNumber'])) {
+                $this->numberOfBeds = "ALL";
+            }
+        } 
+
+        if(isset($this->searchTerms['unitNumber'])) {
+            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
+        } else {
+            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds];
+        }
+
+        $this->investorMetrics = $url;
+                            
 
         // $data = new PropertyData;
         // $data->property = $this->results;
