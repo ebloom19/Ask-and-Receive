@@ -208,7 +208,7 @@ class ScraperController extends Controller
         //     "sold_properties":128,
         // }      
 
-        $propertyData = $this->results[0];
+        $propertyData = $this->results;
         $investorMetrics = $this->investorMetrics;
         $numberOfBeds = $this->numberOfBeds;
         $searchTerms = $this->searchTerms;
