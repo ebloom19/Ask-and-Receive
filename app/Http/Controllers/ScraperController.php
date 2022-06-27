@@ -169,16 +169,18 @@ class ScraperController extends Controller
 
                     $suburb = strtoupper(str_replace('%20', ' ', $this->searchTerms['suburb']));
 
-                    if(isset($this->numberOfBeds)) {
-                        $numberOfBeds = strval($this->numberOfBeds);
-                        if(isset($this->searchTerms['unitNumber'])) {
-                            // $this->investorMetrics = "{$suburb}-{$this->searchTerms['postCode']}";
-                            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"]["{$numberOfBeds}"];
-                        } else {
-                            // $this->investorMetrics = "{$suburb}-{$this->searchTerms['postCode']}";
-                            // $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds] || $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["ALL"];
-                            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["3"];
-                        }
+                    $numberOfBeds = $this->numberOfBeds;
+
+                    if($numberOfBeds >= 5) {
+                        $numberOfBeds = "5+";
+                    } elseif(!isset($numberOfBeds)) {
+                        $numberOfBeds = "ALL";
+                    }
+
+                    if(isset($this->searchTerms['unitNumber'])) {
+                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$numberOfBeds];
+                    } else {
+                        $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$numberOfBeds];
                     }
                     
                 }
@@ -209,7 +211,7 @@ class ScraperController extends Controller
         // Remove broken info 
 
 
-        return $numberOfBeds;
+        // return $numberOfBeds;
         // return $propertyData;
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
