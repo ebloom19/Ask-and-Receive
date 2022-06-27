@@ -171,13 +171,11 @@ class ScraperController extends Controller
 
                     if(isset($this->numberOfBeds)) {
                         if(isset($this->searchTerms['unitNumber'])) {
-                            if(isset($response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds])) {
-                                $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
-                            }
+                            $this->investorMetrics = "{$suburb}-{$this->searchTerms['postCode']}";
+                            // $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
                         } else {
-                            if (isset($response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds])) {
-                                $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds] || $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["ALL"];
-                            }
+                            $this->investorMetrics = "{$suburb}-{$this->searchTerms['postCode']}";
+                            // $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds] || $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"]["ALL"];
                         }
                     }
                     
@@ -209,7 +207,7 @@ class ScraperController extends Controller
         // Remove broken info 
 
 
-        // return $this->$propertyData;
+        return $investorMetrics;
         // return $propertyData;
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
