@@ -83,7 +83,7 @@
                     this.loaded = false;
                     this.success = false;
                     this.errors = {};
-                    axios.post('/results', `results${this.fields}`).then(response => {
+                    axios.post('https://askandreceive.herokuapp.com/results', `results${this.fields}`).then(response => {
                         this.fields = {}; //Clear input fields.
                         this.loaded = true;
                         this.success = true;
