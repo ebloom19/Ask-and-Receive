@@ -49,19 +49,18 @@
     import Loading from 'vue-loading-overlay';
     import 'vue-loading-overlay/dist/vue-loading.css';
     import '../../css/app.css';
-    import axios from 'axios';
+    import FormMixin from '../FormMixin';
 
     export default {
+        mixins: [ FormMixin ],
+
         data() {
             return {
                 isLoading: false,
                 fullPage: true,
                 streetTypes: ['Alley', 'Arcade', 'Avenue', 'Boulevard', 'Bypass', 'Circuit', 'Close', 'Corner', 'Court', 'Crescent', 'Cul-de-sac', 'Drive', 'Esplanade', 'Green', 'Grove', 'Highway', 'Junction', 'Lane', 'Link', 'Mews', 'Parade', 'Place', 'Ridge', 'Road', 'Square', 'Street', 'Terrace'],
                 states: ["NSW", "VIC", "QLD", "TAS", "SA", "WA", "NT", "ACT"],
-                fields: {},
-                errors: {},
-                success: false,
-                loaded: true,
+                'action': '/results',
             }
         },
         components: {
@@ -77,23 +76,6 @@
             },
             onCancel() {
                 console.log('User cancelled the loader.')
-            },
-            submit() {
-                if (this.loaded) {
-                    this.loaded = false;
-                    this.success = false;
-                    this.errors = {};
-                    axios.post('https://askandreceive.herokuapp.com/results', `results${this.fields}`).then(response => {
-                        this.fields = {}; //Clear input fields.
-                        this.loaded = true;
-                        this.success = true;
-                    }).catch(error => {
-                        this.loaded = true;
-                        if (error.response.status === 422) {
-                            this.errors = error.response.data.errors || {};
-                        }
-                    });
-                }
             },
         }
     }
