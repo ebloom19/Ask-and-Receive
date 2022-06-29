@@ -34,8 +34,7 @@
                 <div v-if="errors && errors.postCode" class="text-danger">{{ errors.postCode[0] }}</div>
 
                 <label><input type="checkbox" v-model="fullPage">Full page?</label>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <!-- @click.prevent="doAjax" -->
+                <button type="submit" @click.prevent="doAjax" class="btn btn-primary">Submit</button>
 
                 <div v-if="success" class="alert alert-success mt-3">
                     Message sent!
@@ -50,6 +49,7 @@
     import Loading from 'vue-loading-overlay';
     import 'vue-loading-overlay/dist/vue-loading.css';
     import '../../css/app.css';
+    import axios from 'axios';
 
     export default {
         data() {

@@ -22,8 +22,8 @@ Route::get('/', [ScraperController::class, 'index']);
 //     return view('welcome');
 // });
 
-Route::get('/saveItemRoute', [ScraperController::class, 'results'])->name('results');
+// Route::get('/saveItemRoute', [ScraperController::class, 'results'])->name('results');
 
-Route::get('/results', [ScraperController::class, 'results'])->name('results');
+// Route::get('/results', [ScraperController::class, 'results'])->name('results');
 
-// Route::post('/results', 'ScraperController@results');
+Route::post('/results', 'ScraperController@results');
