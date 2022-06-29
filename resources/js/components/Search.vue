@@ -83,7 +83,7 @@
                     this.loaded = false;
                     this.success = false;
                     this.errors = {};
-                    axios.post('/results', this.fields).then(response => {
+                    axios.post(`/results${this.fields}`).then(response => {
                         this.fields = {}; //Clear input fields.
                         this.loaded = true;
                         this.success = true;

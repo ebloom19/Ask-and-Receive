@@ -55,7 +55,6 @@ class ScraperController extends Controller
 
         $this->validate($request, [
             'streetNumber' => 'required',
-            // 'unitNumber' => 'required',
             'streetName' => 'required',
             'suburb' => 'required',
             'state' => 'required',
@@ -66,8 +65,6 @@ class ScraperController extends Controller
         $streetTypes = $this->streetTypes;
 
         $this->proxy = env('PROXY');
-
-        // $this->searchTerms = $request->input('searchTerms');
 
         $streetNumber = $request->input('streetNumber');
         $unitNumber = $request->input('unitNumber');
@@ -86,16 +83,6 @@ class ScraperController extends Controller
             "state"=>$state,
             "postCode"=>$postCode
         );
-
-
-        // $streetNumber = $this->searchTerms['streetNumber'];
-        // $unitNumber = $this->searchTerms['unitNumber'];
-        // $streetName = $this->searchTerms['streetName'];
-        // $streetType = $this->searchTerms['streetType'];
-        // $suburb = $this->searchTerms['suburb'];
-        // $state = $this->searchTerms['state'];
-        // $postCode = $this->searchTerms['postCode'];
-
 
         $this->focusAddress = "{$streetNumber} ";
 
