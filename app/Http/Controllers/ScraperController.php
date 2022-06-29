@@ -67,21 +67,15 @@ class ScraperController extends Controller
 
         $this->proxy = env('PROXY');
 
-        // $streetNumber = $request->input('streetNumber');
-        // $unitNumber = $request->input('unitNumber');
-        // $streetName = strtoupper($request->input('streetName'));
-        // $streetType = $request->input('streetType');
-        // $suburb = str_replace(' ', '%20', $request->input('suburb'));
-        // $state = strtoupper($request->input('state'));
-        // $postCode = $request->input('postCode');
+        // $this->searchTerms = $request->input('searchTerms');
 
-        $streetNumber = $_GET['streetNumber'];
-        $unitNumber = $_GET['unitNumber'];
-        $streetName = strtoupper($_GET['streetName']);
-        $streetType = $_GET['streetType'];
-        $suburb = str_replace(' ', '%20', $_GET['suburb']);
-        $state = strtoupper($_GET['state']);
-        $postCode = $_GET['postCode'];
+        $streetNumber = $request->input('streetNumber');
+        $unitNumber = $request->input('unitNumber');
+        $streetName = strtoupper($request->input('streetName'));
+        $streetType = $request->input('streetType');
+        $suburb = str_replace(' ', '%20', $request->input('suburb'));
+        $state = strtoupper($request->input('state'));
+        $postCode = $request->input('postCode');
 
         $this->searchTerms = array (
             "streetNumber"=>$streetNumber,
@@ -93,11 +87,22 @@ class ScraperController extends Controller
             "postCode"=>$postCode
         );
 
+
+        // $streetNumber = $this->searchTerms['streetNumber'];
+        // $unitNumber = $this->searchTerms['unitNumber'];
+        // $streetName = $this->searchTerms['streetName'];
+        // $streetType = $this->searchTerms['streetType'];
+        // $suburb = $this->searchTerms['suburb'];
+        // $state = $this->searchTerms['state'];
+        // $postCode = $this->searchTerms['postCode'];
+
+
         $this->focusAddress = "{$streetNumber} ";
 
         $client = new Client();
         $url = "https://www.oldlistings.com.au/real-estate/{$state}/{$suburb}/{$postCode}/buy/1/{$streetName}";
         $page = $client->request('GET', $url, ['proxy' => env('PROXY')]);
+
 
         $resultPages = $page->filter('.pagination > li')->each(function ($result) {
             return $result->text();
@@ -238,7 +243,7 @@ class ScraperController extends Controller
 
 
         // return [$investorMetrics, $numberOfBeds];
-        // return $propertyData;
+        // return $this->searchTerms['postCode'];
 
         return view('welcome', compact('propertyData', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
         // return view('scraper');
