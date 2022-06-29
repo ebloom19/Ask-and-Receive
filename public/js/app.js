@@ -5372,9 +5372,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/app.css */ "./resources/css/app.css");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-//
+/* harmony import */ var _FormMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../FormMixin */ "./resources/js/FormMixin.js");
 //
 //
 //
@@ -5426,16 +5424,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_FormMixin__WEBPACK_IMPORTED_MODULE_3__["default"]],
   data: function data() {
     return {
-      isLoading: false,
+      isLoading: true,
       fullPage: true,
       streetTypes: ['Alley', 'Arcade', 'Avenue', 'Boulevard', 'Bypass', 'Circuit', 'Close', 'Corner', 'Court', 'Crescent', 'Cul-de-sac', 'Drive', 'Esplanade', 'Green', 'Grove', 'Highway', 'Junction', 'Lane', 'Link', 'Mews', 'Parade', 'Place', 'Ridge', 'Road', 'Square', 'Street', 'Terrace'],
       states: ["NSW", "VIC", "QLD", "TAS", "SA", "WA", "NT", "ACT"],
-      fields: {},
-      errors: {},
-      success: false,
-      loaded: true
+      action: '/results'
     };
   },
   components: {
@@ -5453,24 +5449,51 @@ __webpack_require__.r(__webpack_exports__);
     },
     onCancel: function onCancel() {
       console.log('User cancelled the loader.');
-    },
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/FormMixin.js":
+/*!***********************************!*\
+  !*** ./resources/js/FormMixin.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      fields: {},
+      errors: {},
+      success: false,
+      loaded: true,
+      action: ''
+    };
+  },
+  methods: {
     submit: function submit() {
-      var _this2 = this;
+      var _this = this;
 
       if (this.loaded) {
         this.loaded = false;
         this.success = false;
         this.errors = {};
-        axios__WEBPACK_IMPORTED_MODULE_3___default().post('/results', this.fields).then(function (response) {
-          _this2.fields = {}; //Clear input fields.
+        axios.post(this.action, this.fields).then(function (response) {
+          _this.fields = {}; //Clear input fields.
 
-          _this2.loaded = true;
-          _this2.success = true;
+          _this.loaded = true;
+          _this.success = true;
         })["catch"](function (error) {
-          _this2.loaded = true;
+          _this.loaded = true;
 
           if (error.response.status === 422) {
-            _this2.errors = error.response.data.errors || {};
+            _this.errors = error.response.data.errors || {};
           }
         });
       }
@@ -28685,47 +28708,6 @@ var render = function () {
                   _vm._v(_vm._s(_vm.errors.postCode[0])),
                 ])
               : _vm._e(),
-            _vm._v(" "),
-            _c("label", [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.fullPage,
-                    expression: "fullPage",
-                  },
-                ],
-                attrs: { type: "checkbox" },
-                domProps: {
-                  checked: Array.isArray(_vm.fullPage)
-                    ? _vm._i(_vm.fullPage, null) > -1
-                    : _vm.fullPage,
-                },
-                on: {
-                  change: function ($event) {
-                    var $$a = _vm.fullPage,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = null,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 && (_vm.fullPage = $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          (_vm.fullPage = $$a
-                            .slice(0, $$i)
-                            .concat($$a.slice($$i + 1)))
-                      }
-                    } else {
-                      _vm.fullPage = $$c
-                    }
-                  },
-                },
-              }),
-              _vm._v("Full page?"),
-            ]),
             _vm._v(" "),
             _c(
               "button",
