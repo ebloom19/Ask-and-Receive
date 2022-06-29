@@ -33,7 +33,6 @@
                 <input type="number" name="postCode" placeholder="Post Code">
                 <div v-if="errors && errors.postCode" class="text-danger">{{ errors.postCode[0] }}</div>
 
-                <label><input type="checkbox" v-model="fullPage">Full page?</label>
                 <button type="submit" @click.prevent="doAjax" class="btn btn-primary">Submit</button>
 
                 <div v-if="success" class="alert alert-success mt-3">
@@ -56,7 +55,7 @@
 
         data() {
             return {
-                isLoading: false,
+                isLoading: true,
                 fullPage: true,
                 streetTypes: ['Alley', 'Arcade', 'Avenue', 'Boulevard', 'Bypass', 'Circuit', 'Close', 'Corner', 'Court', 'Crescent', 'Cul-de-sac', 'Drive', 'Esplanade', 'Green', 'Grove', 'Highway', 'Junction', 'Lane', 'Link', 'Mews', 'Parade', 'Place', 'Ridge', 'Road', 'Square', 'Street', 'Terrace'],
                 states: ["NSW", "VIC", "QLD", "TAS", "SA", "WA", "NT", "ACT"],
