@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "epic-spinners": "^1.1.0"
+        "epic-spinners": "^1.1.0",
+        "vue-loading-overlay": "^3.4.2"
     }
 }

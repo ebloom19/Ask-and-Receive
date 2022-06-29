@@ -53,18 +53,35 @@ class ScraperController extends Controller
     public function results(Request $request){
         // Log::info(json_encode($request->al()));
 
+        $this->validate($request, [
+            'streetNumber' => 'required',
+            // 'unitNumber' => 'required',
+            'streetName' => 'required',
+            'suburb' => 'required',
+            'state' => 'required',
+            'postCode' => 'required',
+        ]);
+
         $states = $this->states;
         $streetTypes = $this->streetTypes;
 
         $this->proxy = env('PROXY');
 
-        $streetNumber = $request->input('streetNumber');
-        $unitNumber = $request->input('unitNumber');
-        $streetName = strtoupper($request->input('streetName'));
-        $streetType = $request->input('streetType');
-        $suburb = str_replace(' ', '%20', $request->input('suburb'));
-        $state = strtoupper($request->input('state'));
-        $postCode = $request->input('postCode');
+        // $streetNumber = $request->input('streetNumber');
+        // $unitNumber = $request->input('unitNumber');
+        // $streetName = strtoupper($request->input('streetName'));
+        // $streetType = $request->input('streetType');
+        // $suburb = str_replace(' ', '%20', $request->input('suburb'));
+        // $state = strtoupper($request->input('state'));
+        // $postCode = $request->input('postCode');
+
+        $streetNumber = $_GET['streetNumber'];
+        $unitNumber = $_GET['unitNumber'];
+        $streetName = strtoupper($_GET['streetName']);
+        $streetType = $_GET['streetType'];
+        $suburb = str_replace(' ', '%20', $_GET['suburb']);
+        $state = strtoupper($_GET['state']);
+        $postCode = $_GET['postCode'];
 
         $this->searchTerms = array (
             "streetNumber"=>$streetNumber,
@@ -171,25 +188,29 @@ class ScraperController extends Controller
 
         // Call to get Suburb data
         $url = "https://investor-api.realestate.com.au/v2/states/{$this->searchTerms["state"]}/suburbs/{$this->searchTerms["suburb"]}.json";
-        $response = file_get_contents($url);
-        $response = json_decode($response, true);
+        $response = @file_get_contents($url);
 
-        $suburb = strtoupper(str_replace('%20', ' ', $this->searchTerms['suburb']));
-
-        if($this->numberOfBeds >= 5) {
-            $this->numberOfBeds = "5+";
-        } elseif(!isset($this->numberOfBeds) || $this->numberOfBeds == '') {
-            $this->numberOfBeds = "ALL";
-        } elseif($this->numberOfBeds == 1) {
-            if(!isset($this->searchTerms['unitNumber'])) {
+        if($response) {
+            $response = file_get_contents($url);
+            $response = json_decode($response, true);
+    
+            $suburb = strtoupper(str_replace('%20', ' ', $this->searchTerms['suburb']));
+    
+            if($this->numberOfBeds >= 5) {
+                $this->numberOfBeds = "5+";
+            } elseif(!isset($this->numberOfBeds) || $this->numberOfBeds == '') {
                 $this->numberOfBeds = "ALL";
+            } elseif($this->numberOfBeds == 1) {
+                if(!isset($this->searchTerms['unitNumber'])) {
+                    $this->numberOfBeds = "ALL";
+                }
+            } 
+    
+            if(isset($this->searchTerms['unitNumber'])) {
+                $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
+            } else {
+                $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds];
             }
-        } 
-
-        if(isset($this->searchTerms['unitNumber'])) {
-            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
-        } else {
-            $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds];
         }
                             
 

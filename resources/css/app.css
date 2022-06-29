@@ -1,0 +1,46 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #1a202c;
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+.noReuslts {
+    color: white;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formInput {
+    color: white;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group > select, .form-group > input {
+    margin: 10px 0;
+}
+
+.noResults {
+    color: white;
+}
+
+.formMain {
+    display: flex;
+
+}
+
+.formMain > input, .formMain > select, .formMain > button {
+    margin: 10px 5px;
+}

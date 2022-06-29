@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
-        <script src="{{ mix('/js/app.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
@@ -101,11 +102,11 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="mainContainer">
+        <div class="mainContainer" id="app">
             <div class="mainForm">
                 <h1>Ask & Receive</h1>
         
-                <form class="form-group" method="post" action="{{ route('results') }}" accept-charset="UTF-8">
+                {{-- <form class="form-group" method="post" action="{{ route('results') }}" accept-charset="UTF-8">
                     @csrf
 
                     <div class="formMain">
@@ -132,10 +133,9 @@
                         <button type="submit">Submit</button>
                     </div>
                     
-                </form>
-                <div id="app">
-                    <fingerprint-spinner></fingerprint-spinner>
-                </div>
+                </form> --}}
+
+                <search></search>
             </div>
             <div class="cards">
                 @isset($propertyData)     
