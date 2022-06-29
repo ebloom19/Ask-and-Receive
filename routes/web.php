@@ -18,7 +18,7 @@ use App\Http\Controllers\FormController;
 |
 */
 
-Route::get('/', [ScraperController::class, 'results']);
+Route::get('/', [ScraperController::class, 'index']);
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -26,7 +26,7 @@ Route::get('/', [ScraperController::class, 'results']);
 
 // Route::get('/saveItemRoute', [ScraperController::class, 'results'])->name('results');
 
-// Route::get('/results', 'App\Http\Controllers\ScraperController@results');
+Route::get('/results', [ScraperController::class, 'results'])->name('results');
 
 // Route::get('/submit', 'App\Http\Controllers\FormController@submit');
 
