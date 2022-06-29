@@ -26,8 +26,8 @@ Route::get('/', [ScraperController::class, 'index']);
 
 // Route::get('/saveItemRoute', [ScraperController::class, 'results'])->name('results');
 
-Route::post('/results', [ScraperController::class, 'results'])->name('results');
+Route::get('/results', [ScraperController::class, 'results'])->name('results');
 
 // Route::get('/submit', 'App\Http\Controllers\FormController@submit');
 
-Route::post('/results', 'ScraperController@results');
+// Route::post('/results', 'ScraperController@results');
