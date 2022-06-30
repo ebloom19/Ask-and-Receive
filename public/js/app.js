@@ -5472,7 +5472,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
               case 0:
                 // window.location.href = '/search?q=' + $.param(this.form);
                 // const response = await this.form.post('/results');
-                console.log('FINDME', $.param(_this2.form), '&&&&', _this2.form);
+                _this2.form.console.log('FINDME', $.param(_this2.form.streetNumber, _this2.form.unitNumber, _this2.form.streetType, _this2.form.streetName, _this2.form.suburb, _this2.form.state, _this2, form.postCode), '&&&&', _this2.form);
 
               case 1:
               case "end":

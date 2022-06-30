@@ -83,7 +83,17 @@
             async login () {
                 // window.location.href = '/search?q=' + $.param(this.form);
                 // const response = await this.form.post('/results');
-                console.log('FINDME', $.param(this.form), '&&&&', this.form);
+                this.form.
+
+                console.log('FINDME', $.param(
+                    this.form.streetNumber, 
+                    this.form.unitNumber, 
+                    this.form.streetType,
+                    this.form.streetName,
+                    this.form.suburb,
+                    this.form.state,
+                    this,form.postCode
+                ), '&&&&', this.form);
             }
         }
     }
