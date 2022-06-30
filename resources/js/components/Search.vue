@@ -84,7 +84,6 @@
                 // window.location.href = '/search?q=' + $.param(this.form);
                 // const response = await this.form.post('/results');
                 // $.param() *to query string*
-                this.form.
 
                 console.log('FINDME', {
                     streetNumber: this.form.streetNumber, 
