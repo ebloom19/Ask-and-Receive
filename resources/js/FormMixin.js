@@ -1,3 +1,6 @@
+import { createToast } from 'mosha-vue-toastify';
+import 'mosha-vue-toastify/dist/style.css';
+
 export default {
     data() {
       return {
@@ -16,7 +19,7 @@ export default {
           this.loaded = false;
           this.success = false;
           this.errors = {};
-          this.$vToastify.success("Submitted");
+          createToast('Submitted');
           axios.post(this.action, this.fields).then(response => {
             this.fields = {}; //Clear input fields.
             this.loaded = true;
