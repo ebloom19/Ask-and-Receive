@@ -34,10 +34,6 @@
                 <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
 
                 <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button>
-
-                <div v-if="success" class="alert alert-success mt-3">
-                    Message sent!
-                </div>
             </div>
         </form>
 
@@ -84,6 +80,7 @@
             },
             async login () {
                 const response = await this.form.post('/results');
+                console.log('FINDME', response);
             }
         }
     }

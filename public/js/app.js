@@ -5423,10 +5423,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -5479,8 +5475,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context.sent;
+                console.log('FINDME', response);
 
-              case 3:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -28859,12 +28856,6 @@ var render = function () {
             },
             [_vm._v("Submit")]
           ),
-          _vm._v(" "),
-          _vm.success
-            ? _c("div", { staticClass: "alert alert-success mt-3" }, [
-                _vm._v("\n                Message sent!\n            "),
-              ])
-            : _vm._e(),
         ]),
       ]
     ),
