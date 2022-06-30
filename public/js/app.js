@@ -5372,6 +5372,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/app.css */ "./resources/css/app.css");
+/* harmony import */ var _FormMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../FormMixin */ "./resources/js/FormMixin.js");
 //
 //
 //
@@ -5420,10 +5421,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
- // import FormMixin from '../FormMixin';
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  // mixins: [ FormMixin ],
+  mixins: [_FormMixin__WEBPACK_IMPORTED_MODULE_3__["default"]],
   data: function data() {
     return {
       isLoading: true,
@@ -5448,6 +5449,54 @@ __webpack_require__.r(__webpack_exports__);
     },
     onCancel: function onCancel() {
       console.log('User cancelled the loader.');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/FormMixin.js":
+/*!***********************************!*\
+  !*** ./resources/js/FormMixin.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      fields: {},
+      errors: {},
+      success: false,
+      loaded: true,
+      action: ''
+    };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      if (this.loaded) {
+        this.loaded = false;
+        this.success = false;
+        this.errors = {};
+        axios.post(this.action, this.fields).then(function (response) {
+          _this.fields = {}; //Clear input fields.
+
+          _this.loaded = true;
+          _this.success = true;
+        })["catch"](function (error) {
+          _this.loaded = true;
+
+          if (error.response.status === 422) {
+            _this.errors = error.response.data.errors || {};
+          }
+        });
+      }
     }
   }
 });
@@ -28662,16 +28711,7 @@ var render = function () {
             _vm._v(" "),
             _c(
               "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { type: "submit" },
-                on: {
-                  click: function ($event) {
-                    $event.preventDefault()
-                    return _vm.doAjax.apply(null, arguments)
-                  },
-                },
-              },
+              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
               [_vm._v("Submit")]
             ),
             _vm._v(" "),

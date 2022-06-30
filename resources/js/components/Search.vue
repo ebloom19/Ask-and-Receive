@@ -33,7 +33,7 @@
                 <input type="number" name="postCode" placeholder="Post Code">
                 <div v-if="errors && errors.postCode" class="text-danger">{{ errors.postCode[0] }}</div>
 
-                <button type="submit" @click.prevent="doAjax" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
 
                 <div v-if="success" class="alert alert-success mt-3">
                     Message sent!
@@ -48,10 +48,10 @@
     import Loading from 'vue-loading-overlay';
     import 'vue-loading-overlay/dist/vue-loading.css';
     import '../../css/app.css';
-    // import FormMixin from '../FormMixin';
+    import FormMixin from '../FormMixin';
 
     export default {
-        // mixins: [ FormMixin ],
+        mixins: [ FormMixin ],
 
         data() {
             return {
