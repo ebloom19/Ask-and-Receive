@@ -50,8 +50,6 @@
     import '../../css/app.css';
     import FormMixin from '../FormMixin';
 
-    Vue.use(VueToastify);
-
     export default {
         mixins: [ FormMixin ],
 

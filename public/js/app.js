@@ -5423,7 +5423,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-Vue.use(VueToastify);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_FormMixin__WEBPACK_IMPORTED_MODULE_3__["default"]],
   data: function data() {
