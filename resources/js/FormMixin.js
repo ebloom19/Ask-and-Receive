@@ -1,7 +1,3 @@
-import VueToastify from "vue-toastify";
-
-Vue.use(VueToastify);
-
 export default {
     data() {
       return {
