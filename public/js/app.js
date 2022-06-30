@@ -5474,6 +5474,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                doAjax();
                 window.location.href = '/results?' + $.param((_$$param = {
                   streetNumber: _this2.form.streetNumber,
                   unitNumber: _this2.form.unitNumber
@@ -5489,7 +5490,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
                 //     postCode: this.form.postCode
                 // }), '&&&&', this.form);
 
-              case 1:
+              case 2:
               case "end":
                 return _context.stop();
             }
@@ -39779,12 +39780,6 @@ var render = function () {
               {
                 staticClass: "btn btn-primary",
                 attrs: { type: "submit", disabled: _vm.form.busy },
-                on: {
-                  click: function ($event) {
-                    $event.preventDefault()
-                    return _vm.doAjax.apply(null, arguments)
-                  },
-                },
               },
               [_vm._v("Submit")]
             ),

@@ -33,7 +33,7 @@
                 <input type="number" name="postCode" v-model="form.postCode" placeholder="Post Code">
                 <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
 
-                <button type="submit" :disabled="form.busy" @click.prevent="doAjax" class="btn btn-primary">Submit</button>
+                <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button>
             </div>
         </form>
 
@@ -81,6 +81,7 @@
                 console.log('User cancelled the loader.')
             },
             async submit () {
+                doAjax();
                 window.location.href = '/results?' + $.param({
                     streetNumber: this.form.streetNumber, 
                     unitNumber: this.form.unitNumber, 
