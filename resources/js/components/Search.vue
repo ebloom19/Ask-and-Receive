@@ -33,7 +33,9 @@
                 <input type="number" name="postCode" v-model="form.postCode" placeholder="Post Code">
                 <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
 
-                <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button>
+                <Button :form="form">Submit</Button>
+
+                <!-- <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button> -->
             </div>
         </form>
 
@@ -45,6 +47,15 @@
     import 'vue-loading-overlay/dist/vue-loading.css';
     import '../../css/app.css';
     import Form from 'vform';
+    import {
+        Button,
+        HasError,
+        AlertError,
+        AlertErrors,
+        AlertSuccess
+    } from 'vform/src/components/bootstrap5';
+
+    Vue.component(Button.name, Button);
 
     window.$ = window.jQuery = require('jquery')
 
