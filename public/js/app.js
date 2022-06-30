@@ -5461,20 +5461,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     onCancel: function onCancel() {
       console.log('User cancelled the loader.');
     },
-    submit: function submit() {
+    login: function login() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log('THIS', _this2.form);
-                window.location.href = '/results' + _this2.form; // const response = await this.form.post('/results');
+                _context.next = 2;
+                return _this2.form.post('/results');
 
+              case 2:
+                response = _context.sent;
                 console.log('FINDME', response);
 
-              case 3:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -28585,7 +28588,7 @@ var render = function () {
         on: {
           submit: function ($event) {
             $event.preventDefault()
-            return _vm.submit.apply(null, arguments)
+            return _vm.login.apply(null, arguments)
           },
           keydown: function ($event) {
             return _vm.form.onKeydown($event)
