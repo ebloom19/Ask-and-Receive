@@ -1,9 +1,9 @@
 <template>
     <div class="vld-parent">
-        <loading v-model:active="isLoading"
+        <!-- <loading v-model:active="isLoading"
                  :can-cancel="true"
                  :on-cancel="onCancel"
-                 :is-full-page="fullPage"/>
+                 :is-full-page="fullPage"/> -->
 
         <form @submit.prevent="submit">
             <div class="formMain">
@@ -48,18 +48,19 @@
     import Loading from 'vue-loading-overlay';
     import 'vue-loading-overlay/dist/vue-loading.css';
     import '../../css/app.css';
-    import FormMixin from '../FormMixin';
 
     export default {
-        mixins: [ FormMixin ],
-
         data() {
             return {
                 isLoading: true,
                 fullPage: true,
                 streetTypes: ['Alley', 'Arcade', 'Avenue', 'Boulevard', 'Bypass', 'Circuit', 'Close', 'Corner', 'Court', 'Crescent', 'Cul-de-sac', 'Drive', 'Esplanade', 'Green', 'Grove', 'Highway', 'Junction', 'Lane', 'Link', 'Mews', 'Parade', 'Place', 'Ridge', 'Road', 'Square', 'Street', 'Terrace'],
                 states: ["NSW", "VIC", "QLD", "TAS", "SA", "WA", "NT", "ACT"],
-                action: 'https://localhost:8000/results',
+                action: '/results',
+                fields: {},
+                errors: {},
+                success: false,
+                loaded: true,
             }
         },
         components: {
@@ -75,6 +76,23 @@
             },
             onCancel() {
                 console.log('User cancelled the loader.')
+            },
+            submit() {
+                if (this.loaded) {
+                this.loaded = false;
+                this.success = false;
+                this.errors = {};
+                axios.post(this.action, this.fields).then(response => {
+                    this.fields = {}; //Clear input fields.
+                    this.loaded = true;
+                    this.success = true;
+                }).catch(error => {
+                    this.loaded = true;
+                    if (error.response.status === 422) {
+                    this.errors = error.response.data.errors || {};
+                    }
+                });
+                }
             },
         }
     }

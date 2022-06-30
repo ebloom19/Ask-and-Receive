@@ -5372,7 +5372,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
 /* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/app.css */ "./resources/css/app.css");
-/* harmony import */ var _FormMixin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../FormMixin */ "./resources/js/FormMixin.js");
 //
 //
 //
@@ -5419,19 +5418,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mixins: [_FormMixin__WEBPACK_IMPORTED_MODULE_3__["default"]],
   data: function data() {
     return {
       isLoading: true,
       fullPage: true,
       streetTypes: ['Alley', 'Arcade', 'Avenue', 'Boulevard', 'Bypass', 'Circuit', 'Close', 'Corner', 'Court', 'Crescent', 'Cul-de-sac', 'Drive', 'Esplanade', 'Green', 'Grove', 'Highway', 'Junction', 'Lane', 'Link', 'Mews', 'Parade', 'Place', 'Ridge', 'Road', 'Square', 'Street', 'Terrace'],
       states: ["NSW", "VIC", "QLD", "TAS", "SA", "WA", "NT", "ACT"],
-      action: 'https://localhost:8000/results'
+      action: '/results',
+      fields: {},
+      errors: {},
+      success: false,
+      loaded: true
     };
   },
   components: {
@@ -5449,51 +5450,24 @@ __webpack_require__.r(__webpack_exports__);
     },
     onCancel: function onCancel() {
       console.log('User cancelled the loader.');
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/FormMixin.js":
-/*!***********************************!*\
-  !*** ./resources/js/FormMixin.js ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      fields: {},
-      errors: {},
-      success: false,
-      loaded: true,
-      action: ''
-    };
-  },
-  methods: {
+    },
     submit: function submit() {
-      var _this = this;
+      var _this2 = this;
 
       if (this.loaded) {
         this.loaded = false;
         this.success = false;
         this.errors = {};
         axios.post(this.action, this.fields).then(function (response) {
-          _this.fields = {}; //Clear input fields.
+          _this2.fields = {}; //Clear input fields.
 
-          _this.loaded = true;
-          _this.success = true;
+          _this2.loaded = true;
+          _this2.success = true;
         })["catch"](function (error) {
-          _this.loaded = true;
+          _this2.loaded = true;
 
           if (error.response.status === 422) {
-            _this.errors = error.response.data.errors || {};
+            _this2.errors = error.response.data.errors || {};
           }
         });
       }
@@ -28574,158 +28548,136 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "vld-parent" },
-    [
-      _c("loading", {
-        attrs: {
-          "can-cancel": true,
-          "on-cancel": _vm.onCancel,
-          "is-full-page": _vm.fullPage,
-        },
-        model: {
-          value: _vm.isLoading,
-          callback: function ($$v) {
-            _vm.isLoading = $$v
+  return _c("div", { staticClass: "vld-parent" }, [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function ($event) {
+            $event.preventDefault()
+            return _vm.submit.apply(null, arguments)
           },
-          expression: "isLoading",
         },
-      }),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.submit.apply(null, arguments)
+      },
+      [
+        _c("div", { staticClass: "formMain" }, [
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "streetNumber",
+              placeholder: "Street Number",
             },
-          },
-        },
-        [
-          _c("div", { staticClass: "formMain" }, [
-            _c("input", {
-              attrs: {
-                type: "text",
-                name: "streetNumber",
-                placeholder: "Street Number",
-              },
-            }),
-            _vm._v(" "),
-            _vm.errors && _vm.errors.streetNumber
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.errors.streetNumber[0])),
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("input", {
-              attrs: {
-                type: "number",
-                name: "unitNumber",
-                placeholder: "Unit Number",
-              },
-            }),
-            _vm._v(" "),
-            _vm.errors && _vm.errors.unitNumber
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.errors.unitNumber[0])),
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("input", {
-              attrs: {
-                type: "text",
-                name: "streetName",
-                placeholder: "Street Name",
-              },
-            }),
-            _vm._v(" "),
-            _vm.errors && _vm.errors.streetName
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.errors.streetName[0])),
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "select",
-              { attrs: { name: "streetType" } },
-              _vm._l(_vm.streetTypes, function (item) {
-                return _c("option", { key: item }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(item) +
-                      "\n                "
-                  ),
-                ])
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _vm.errors && _vm.errors.streetType
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.errors.streetType[0])),
-                ])
-              : _vm._e(),
-          ]),
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "formMain" }, [
-            _c("input", {
-              attrs: { type: "text", name: "suburb", placeholder: "Suburb" },
+          _vm.errors && _vm.errors.streetNumber
+            ? _c("div", { staticClass: "text-danger" }, [
+                _vm._v(_vm._s(_vm.errors.streetNumber[0])),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "number",
+              name: "unitNumber",
+              placeholder: "Unit Number",
+            },
+          }),
+          _vm._v(" "),
+          _vm.errors && _vm.errors.unitNumber
+            ? _c("div", { staticClass: "text-danger" }, [
+                _vm._v(_vm._s(_vm.errors.unitNumber[0])),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "streetName",
+              placeholder: "Street Name",
+            },
+          }),
+          _vm._v(" "),
+          _vm.errors && _vm.errors.streetName
+            ? _c("div", { staticClass: "text-danger" }, [
+                _vm._v(_vm._s(_vm.errors.streetName[0])),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "select",
+            { attrs: { name: "streetType" } },
+            _vm._l(_vm.streetTypes, function (item) {
+              return _c("option", { key: item }, [
+                _vm._v(
+                  "\n                    " + _vm._s(item) + "\n                "
+                ),
+              ])
             }),
-            _vm._v(" "),
-            _vm.errors && _vm.errors.suburb
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.errors.suburb[0])),
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "select",
-              { attrs: { name: "state" } },
-              _vm._l(_vm.states, function (st) {
-                return _c("option", { key: st }, [_vm._v(_vm._s(st))])
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _vm.errors && _vm.errors.state
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.errors.state[0])),
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("input", {
-              attrs: {
-                type: "number",
-                name: "postCode",
-                placeholder: "Post Code",
-              },
+            0
+          ),
+          _vm._v(" "),
+          _vm.errors && _vm.errors.streetType
+            ? _c("div", { staticClass: "text-danger" }, [
+                _vm._v(_vm._s(_vm.errors.streetType[0])),
+              ])
+            : _vm._e(),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "formMain" }, [
+          _c("input", {
+            attrs: { type: "text", name: "suburb", placeholder: "Suburb" },
+          }),
+          _vm._v(" "),
+          _vm.errors && _vm.errors.suburb
+            ? _c("div", { staticClass: "text-danger" }, [
+                _vm._v(_vm._s(_vm.errors.suburb[0])),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "select",
+            { attrs: { name: "state" } },
+            _vm._l(_vm.states, function (st) {
+              return _c("option", { key: st }, [_vm._v(_vm._s(st))])
             }),
-            _vm._v(" "),
-            _vm.errors && _vm.errors.postCode
-              ? _c("div", { staticClass: "text-danger" }, [
-                  _vm._v(_vm._s(_vm.errors.postCode[0])),
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Submit")]
-            ),
-            _vm._v(" "),
-            _vm.success
-              ? _c("div", { staticClass: "alert alert-success mt-3" }, [
-                  _vm._v("\n                Message sent!\n            "),
-                ])
-              : _vm._e(),
-          ]),
-        ]
-      ),
-    ],
-    1
-  )
+            0
+          ),
+          _vm._v(" "),
+          _vm.errors && _vm.errors.state
+            ? _c("div", { staticClass: "text-danger" }, [
+                _vm._v(_vm._s(_vm.errors.state[0])),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "number",
+              name: "postCode",
+              placeholder: "Post Code",
+            },
+          }),
+          _vm._v(" "),
+          _vm.errors && _vm.errors.postCode
+            ? _c("div", { staticClass: "text-danger" }, [
+                _vm._v(_vm._s(_vm.errors.postCode[0])),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [_vm._v("Submit")]
+          ),
+          _vm._v(" "),
+          _vm.success
+            ? _c("div", { staticClass: "alert alert-success mt-3" }, [
+                _vm._v("\n                Message sent!\n            "),
+              ])
+            : _vm._e(),
+        ]),
+      ]
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
