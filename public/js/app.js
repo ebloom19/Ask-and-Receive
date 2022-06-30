@@ -5464,7 +5464,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
     onCancel: function onCancel() {
       console.log('User cancelled the loader.');
     },
-    login: function login() {
+    submit: function submit() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -5474,7 +5474,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                window.location.href = '/search?' + $.param((_$$param = {
+                window.location.href = '/results?' + $.param((_$$param = {
                   streetNumber: _this2.form.streetNumber,
                   unitNumber: _this2.form.unitNumber
                 }, _defineProperty(_$$param, "unitNumber", _this2.form.unitNumber), _defineProperty(_$$param, "streetName", _this2.form.streetName), _defineProperty(_$$param, "suburb", _this2.form.suburb), _defineProperty(_$$param, "state", _this2.form.state), _defineProperty(_$$param, "postCode", _this2.form.postCode), _$$param)); // const response = await this.form.post('/results');
@@ -39492,7 +39492,7 @@ var render = function () {
         on: {
           submit: function ($event) {
             $event.preventDefault()
-            return _vm.login.apply(null, arguments)
+            return _vm.submit.apply(null, arguments)
           },
           keydown: function ($event) {
             return _vm.form.onKeydown($event)
