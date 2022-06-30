@@ -81,11 +81,7 @@
                 console.log('User cancelled the loader.')
             },
             async login () {
-                // window.location.href = '/search?q=' + $.param(this.form);
-                // const response = await this.form.post('/results');
-                // $.param() *to query string*
-
-                console.log('FINDME', $.param({
+                window.location.href = '/search?' + $.param({
                     streetNumber: this.form.streetNumber, 
                     unitNumber: this.form.unitNumber, 
                     unitNumber: this.form.unitNumber,
@@ -93,7 +89,19 @@
                     suburb: this.form.suburb,
                     state: this.form.state,
                     postCode: this.form.postCode
-                }), '&&&&', this.form);
+                });
+                // const response = await this.form.post('/results');
+                // $.param() *to query string*
+
+                // console.log('FINDME', $.param({
+                //     streetNumber: this.form.streetNumber, 
+                //     unitNumber: this.form.unitNumber, 
+                //     unitNumber: this.form.unitNumber,
+                //     streetName: this.form.streetName,
+                //     suburb: this.form.suburb,
+                //     state: this.form.state,
+                //     postCode: this.form.postCode
+                // }), '&&&&', this.form);
             }
         }
     }

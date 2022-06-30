@@ -5474,13 +5474,20 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // window.location.href = '/search?q=' + $.param(this.form);
-                // const response = await this.form.post('/results');
-                // $.param() *to query string*
-                console.log('FINDME', $.param((_$$param = {
+                window.location.href = '/search?' + $.param((_$$param = {
                   streetNumber: _this2.form.streetNumber,
                   unitNumber: _this2.form.unitNumber
-                }, _defineProperty(_$$param, "unitNumber", _this2.form.unitNumber), _defineProperty(_$$param, "streetName", _this2.form.streetName), _defineProperty(_$$param, "suburb", _this2.form.suburb), _defineProperty(_$$param, "state", _this2.form.state), _defineProperty(_$$param, "postCode", _this2.form.postCode), _$$param)), '&&&&', _this2.form);
+                }, _defineProperty(_$$param, "unitNumber", _this2.form.unitNumber), _defineProperty(_$$param, "streetName", _this2.form.streetName), _defineProperty(_$$param, "suburb", _this2.form.suburb), _defineProperty(_$$param, "state", _this2.form.state), _defineProperty(_$$param, "postCode", _this2.form.postCode), _$$param)); // const response = await this.form.post('/results');
+                // $.param() *to query string*
+                // console.log('FINDME', $.param({
+                //     streetNumber: this.form.streetNumber, 
+                //     unitNumber: this.form.unitNumber, 
+                //     unitNumber: this.form.unitNumber,
+                //     streetName: this.form.streetName,
+                //     suburb: this.form.suburb,
+                //     state: this.form.state,
+                //     postCode: this.form.postCode
+                // }), '&&&&', this.form);
 
               case 1:
               case "end":
