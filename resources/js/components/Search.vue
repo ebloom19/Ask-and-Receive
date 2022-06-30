@@ -59,7 +59,7 @@
                 fullPage: true,
                 streetTypes: ['Alley', 'Arcade', 'Avenue', 'Boulevard', 'Bypass', 'Circuit', 'Close', 'Corner', 'Court', 'Crescent', 'Cul-de-sac', 'Drive', 'Esplanade', 'Green', 'Grove', 'Highway', 'Junction', 'Lane', 'Link', 'Mews', 'Parade', 'Place', 'Ridge', 'Road', 'Square', 'Street', 'Terrace'],
                 states: ["NSW", "VIC", "QLD", "TAS", "SA", "WA", "NT", "ACT"],
-                action: '/api/results',
+                action: 'https://localhost:8000/results',
             }
         },
         components: {
