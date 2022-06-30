@@ -5,7 +5,7 @@
                  :on-cancel="onCancel"
                  :is-full-page="fullPage"/> -->
 
-        <form @submit.prevent="login" @keydown="form.onKeydown($event)">
+        <form @submit.prevent="submit" @keydown="form.onKeydown($event)">
             <div class="formMain">
                 <input type="text" name="streetNumber" v-model="form.streetNumber" placeholder="Street Number">
                 <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
@@ -78,8 +78,10 @@
             onCancel() {
                 console.log('User cancelled the loader.')
             },
-            async login () {
-                const response = await this.form.post('/results');
+            async submit () {
+                console.log('THIS', this.form);
+                window.location.href = '/results' + this.form;
+                // const response = await this.form.post('/results');
                 console.log('FINDME', response);
             }
         }
