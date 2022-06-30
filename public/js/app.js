@@ -5468,7 +5468,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var _console$log;
+        var _$$param;
 
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
@@ -5477,10 +5477,10 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
                 // window.location.href = '/search?q=' + $.param(this.form);
                 // const response = await this.form.post('/results');
                 // $.param() *to query string*
-                console.log('FINDME', (_console$log = {
+                console.log('FINDME', $.param((_$$param = {
                   streetNumber: _this2.form.streetNumber,
                   unitNumber: _this2.form.unitNumber
-                }, _defineProperty(_console$log, "unitNumber", _this2.form.unitNumber), _defineProperty(_console$log, "streetName", _this2.form.streetName), _defineProperty(_console$log, "suburb", _this2.form.suburb), _defineProperty(_console$log, "state", _this2.form.state), _defineProperty(_console$log, "postCode", _this2.form.postCode), _console$log), '&&&&', _this2.form);
+                }, _defineProperty(_$$param, "unitNumber", _this2.form.unitNumber), _defineProperty(_$$param, "streetName", _this2.form.streetName), _defineProperty(_$$param, "suburb", _this2.form.suburb), _defineProperty(_$$param, "state", _this2.form.state), _defineProperty(_$$param, "postCode", _this2.form.postCode), _$$param)), '&&&&', _this2.form);
 
               case 1:
               case "end":

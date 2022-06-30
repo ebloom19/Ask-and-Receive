@@ -85,7 +85,7 @@
                 // const response = await this.form.post('/results');
                 // $.param() *to query string*
 
-                console.log('FINDME', {
+                console.log('FINDME', $.param({
                     streetNumber: this.form.streetNumber, 
                     unitNumber: this.form.unitNumber, 
                     unitNumber: this.form.unitNumber,
@@ -93,7 +93,7 @@
                     suburb: this.form.suburb,
                     state: this.form.state,
                     postCode: this.form.postCode
-                }, '&&&&', this.form);
+                }), '&&&&', this.form);
             }
         }
     }
