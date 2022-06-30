@@ -5474,8 +5474,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _this2.methods.doAjax();
-
+                // this.methods.doAjax();
                 window.location.href = '/results?' + $.param((_$$param = {
                   streetNumber: _this2.form.streetNumber,
                   unitNumber: _this2.form.unitNumber
@@ -5491,7 +5490,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
                 //     postCode: this.form.postCode
                 // }), '&&&&', this.form);
 
-              case 2:
+              case 1:
               case "end":
                 return _context.stop();
             }
