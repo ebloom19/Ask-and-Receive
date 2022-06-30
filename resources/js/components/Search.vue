@@ -79,7 +79,7 @@
                 console.log('User cancelled the loader.')
             },
             async login () {
-                const response = await this.form.post('/results');
+                const response = await this.form.get('/results');
                 console.log('FINDME', response);
             }
         }
