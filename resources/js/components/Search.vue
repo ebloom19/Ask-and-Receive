@@ -79,8 +79,9 @@
                 console.log('User cancelled the loader.')
             },
             async login () {
-                const response = await this.form.post('/results');
-                console.log('FINDME', response);
+                // window.location.href = '/search?q=' + $.param(this.form);
+                // const response = await this.form.post('/results');
+                console.log('FINDME', $.param(this.form), '&&&&', this.form);
             }
         }
     }
