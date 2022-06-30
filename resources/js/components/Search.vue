@@ -46,6 +46,8 @@
     import '../../css/app.css';
     import Form from 'vform';
 
+    window.$ = window.jQuery = require('jquery')
+
     export default {
         data() {
             return {
