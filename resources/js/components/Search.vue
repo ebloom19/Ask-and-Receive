@@ -81,7 +81,7 @@
                 console.log('User cancelled the loader.')
             },
             async submit () {
-                doAjax();
+                this.methods.doAjax();
                 window.location.href = '/results?' + $.param({
                     streetNumber: this.form.streetNumber, 
                     unitNumber: this.form.unitNumber, 
