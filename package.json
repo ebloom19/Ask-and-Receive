@@ -25,7 +25,6 @@
     },
     "dependencies": {
         "epic-spinners": "^1.1.0",
-        "mosha-vue-toastify": "^1.0.23",
         "vue-loading-overlay": "^3.4.2"
     }
 }

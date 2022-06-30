@@ -49,7 +49,6 @@
     import 'vue-loading-overlay/dist/vue-loading.css';
     import '../../css/app.css';
     import FormMixin from '../FormMixin';
-    import VueToastify from "vue-toastify";
 
     Vue.use(VueToastify);
 
