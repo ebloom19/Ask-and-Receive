@@ -85,15 +85,15 @@
                 // const response = await this.form.post('/results');
                 this.form.
 
-                console.log('FINDME', $.param(
-                    this.form.streetNumber, 
-                    this.form.unitNumber, 
-                    this.form.streetType,
-                    this.form.streetName,
-                    this.form.suburb,
-                    this.form.state,
-                    this,form.postCode
-                ), '&&&&', this.form);
+                console.log('FINDME', $.param({
+                    streetNumber: this.form.streetNumber, 
+                    unitNumber: this.form.unitNumber, 
+                    unitNumber: this.form.unitNumber,
+                    streetName: this.form.streetName,
+                    suburb: this.form.suburb,
+                    state: this.form.state,
+                    postCode: this.form.postCode
+                }), '&&&&', this.form);
             }
         }
     }
