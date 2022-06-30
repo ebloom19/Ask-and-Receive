@@ -48,10 +48,10 @@
     import Loading from 'vue-loading-overlay';
     import 'vue-loading-overlay/dist/vue-loading.css';
     import '../../css/app.css';
-    import FormMixin from '../FormMixin';
+    // import FormMixin from '../FormMixin';
 
     export default {
-        mixins: [ FormMixin ],
+        // mixins: [ FormMixin ],
 
         data() {
             return {
