@@ -83,9 +83,10 @@
             async login () {
                 // window.location.href = '/search?q=' + $.param(this.form);
                 // const response = await this.form.post('/results');
+                // $.param() *to query string*
                 this.form.
 
-                console.log('FINDME', $.param({
+                console.log('FINDME', {
                     streetNumber: this.form.streetNumber, 
                     unitNumber: this.form.unitNumber, 
                     unitNumber: this.form.unitNumber,
@@ -93,7 +94,7 @@
                     suburb: this.form.suburb,
                     state: this.form.state,
                     postCode: this.form.postCode
-                }), '&&&&', this.form);
+                }, '&&&&', this.form);
             }
         }
     }
