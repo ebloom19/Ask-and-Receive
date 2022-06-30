@@ -1,3 +1,7 @@
+import VueToastify from "vue-toastify";
+
+Vue.use(VueToastify);
+
 export default {
     data() {
       return {
@@ -16,6 +20,7 @@ export default {
           this.loaded = false;
           this.success = false;
           this.errors = {};
+          this.$vToastify.success("Submitted");
           axios.post(this.action, this.fields).then(response => {
             this.fields = {}; //Clear input fields.
             this.loaded = true;
