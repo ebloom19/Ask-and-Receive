@@ -16,7 +16,7 @@ form {
     background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    width: 75vw;
+    width: 85vw;
 }
 
 form > .form-group {
