@@ -116,7 +116,7 @@
             
                             @if (isset($investorMetrics['investor_metrics']))      
                                 <div class="d-flex flex-row">
-                                    <h4 class="card-subtitle mb-2 text-muted">{{ ucwords($suburb) }} View</h4>
+                                    <h4 class="card-subtitle mb-2 text-muted">{{ ucwords(strtolower($suburb)) }} View</h4>
                                     <small class="mt-0 m-3"> - for {{$numberOfBeds == "ALL" ? 'all' : "{$numberOfBeds} Bedroom"}}  {{isset($searchTerms['unitNumber']) ? 'Units' : 'Houses'}}</small>
                                 </div>
                                 <p class="card-text">Average Sale Price : ${{ trim(strrev(chunk_split(strrev($investorMetrics['investor_metrics']['median_sold_price']), 3, ','))) }}</p>
