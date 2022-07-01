@@ -39501,7 +39501,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "vld-parent" },
+    { staticClass: "container-fluid" },
     [
       _c("loading", {
         attrs: {
@@ -39532,160 +39532,166 @@ var render = function () {
           },
         },
         [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "streetNumber" } }, [
-              _vm._v("Street Number"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.streetNumber,
-                  expression: "form.streetNumber",
-                },
-              ],
-              attrs: { type: "text", name: "streetNumber" },
-              domProps: { value: _vm.form.streetNumber },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "streetNumber", $event.target.value)
-                },
-              },
-            }),
-            _vm._v(" "),
-            _vm.form.errors.has("streetNumber")
-              ? _c("div", {
-                  domProps: {
-                    innerHTML: _vm._s(_vm.form.errors.get("streetNumber")),
-                  },
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "unitNumber" } }, [
-              _vm._v("Unit Number"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.streetNumber,
-                  expression: "form.streetNumber",
-                },
-              ],
-              attrs: { type: "text", name: "unitNumber" },
-              domProps: { value: _vm.form.streetNumber },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "streetNumber", $event.target.value)
-                },
-              },
-            }),
-            _vm._v(" "),
-            _vm.form.errors.has("unitNumber")
-              ? _c("div", {
-                  domProps: {
-                    innerHTML: _vm._s(_vm.form.errors.get("unitNumber")),
-                  },
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "streetName" } }, [
-              _vm._v("Street Name"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.streetNumber,
-                  expression: "form.streetNumber",
-                },
-              ],
-              attrs: { type: "text", name: "streetName" },
-              domProps: { value: _vm.form.streetNumber },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "streetNumber", $event.target.value)
-                },
-              },
-            }),
-            _vm._v(" "),
-            _vm.form.errors.has("streetName")
-              ? _c("div", {
-                  domProps: {
-                    innerHTML: _vm._s(_vm.form.errors.get("streetName")),
-                  },
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "streetType" } }, [
-              _vm._v("Street Type"),
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
+          _c(
+            "div",
+            { staticClass: "form-group d-flex flex-row align-items-center" },
+            [
+              _c("label", { attrs: { for: "streetNumber" } }, [
+                _vm._v("Street Number"),
+              ]),
+              _vm._v(" "),
+              _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.form.streetType,
-                    expression: "form.streetType",
+                    value: _vm.form.streetNumber,
+                    expression: "form.streetNumber",
                   },
                 ],
-                attrs: { name: "streetType" },
+                attrs: { type: "text", name: "streetNumber" },
+                domProps: { value: _vm.form.streetNumber },
                 on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.form,
-                      "streetType",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "streetNumber", $event.target.value)
                   },
                 },
-              },
-              _vm._l(_vm.streetTypes, function (item) {
-                return _c("option", { key: item }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(item) +
-                      "\n                "
-                  ),
-                ])
               }),
-              0
-            ),
-            _vm._v(" "),
-            _vm.form.errors.has("streetType")
-              ? _c("div", {
-                  domProps: {
-                    innerHTML: _vm._s(_vm.form.errors.get("streetType")),
+              _vm._v(" "),
+              _vm.form.errors.has("streetNumber")
+                ? _c("div", {
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("streetNumber")),
+                    },
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "unitNumber" } }, [
+                _vm._v("Unit Number"),
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.streetNumber,
+                    expression: "form.streetNumber",
                   },
-                })
-              : _vm._e(),
-          ]),
+                ],
+                attrs: { type: "text", name: "unitNumber" },
+                domProps: { value: _vm.form.streetNumber },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "streetNumber", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.form.errors.has("unitNumber")
+                ? _c("div", {
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("unitNumber")),
+                    },
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "streetName" } }, [
+                _vm._v("Street Name"),
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.streetNumber,
+                    expression: "form.streetNumber",
+                  },
+                ],
+                attrs: { type: "text", name: "streetName" },
+                domProps: { value: _vm.form.streetNumber },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "streetNumber", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.form.errors.has("streetName")
+                ? _c("div", {
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("streetName")),
+                    },
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "streetType" } }, [
+                _vm._v("Street Type"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.streetType,
+                      expression: "form.streetType",
+                    },
+                  ],
+                  attrs: { name: "streetType" },
+                  on: {
+                    change: function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "streetType",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    },
+                  },
+                },
+                _vm._l(_vm.streetTypes, function (item) {
+                  return _c("option", { key: item }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item) +
+                        "\n                "
+                    ),
+                  ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _vm.form.errors.has("streetType")
+                ? _c("div", {
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("streetType")),
+                    },
+                  })
+                : _vm._e(),
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "suburb" } }, [_vm._v("Suburb")]),
