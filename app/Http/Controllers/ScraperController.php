@@ -230,9 +230,18 @@ class ScraperController extends Controller
 
         // Remove broken info 
 
-        foreach ($this->results as $result) {
+        $numOfResults = [];
 
+        foreach ($this->results as $result) {
+            array_push($numOfResults, count(reset($result)['listingHistory']));
+            $numOfResults[array_key_first($result)] = count(reset($result)['listingHistory']);
         }
+
+        $bestMatch = array_keys($numOfResults, max($numOfResults));
+
+        return "{$bestMatch} * {$numOfResults}";
+
+
 
 
         // return [$investorMetrics, $numberOfBeds];

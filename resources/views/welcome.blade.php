@@ -78,6 +78,9 @@
                                                     @if (str_contains($feature, "Car"))                                                    
                                                     <i class="fas fa-car mt-1"></i>
                                                     @endif
+                                                    @if (str_contains($feature, "Size"))                                                    
+                                                    <i class="fas fa-up-right-and-down-left-from-center mt-1"></i>
+                                                    @endif
                                                     <p class="card-text ml-2">{{ (int)filter_var($feature, FILTER_SANITIZE_NUMBER_INT) }}</p>
                                                 </div>              
                                             @endif 
