@@ -14,10 +14,10 @@
     //width: 50vw;
     width: 90%;
     margin: 40px auto;
-    max-width: 50em;
+    max-width: 60em;
 
     position: relative;
-    padding: 30% 2em;
+    padding: 5% 3em;
     box-sizing: border-box;
 
     $border: 7px;
@@ -37,7 +37,6 @@
         background: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
 
         background-color: #85FFBD;
-        /* border-radius: 5px; */
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
 }
