@@ -237,9 +237,12 @@ class ScraperController extends Controller
         }
 
         $bestMatch = array_search(max($numOfResults), $numOfResults);
+
+        $keys = array_keys($this->results);
+        $this->results = $this->results[$keys[$bestMatch]];
         
 
-        return $bestMatch;
+        return $this->results;
 
 
 
