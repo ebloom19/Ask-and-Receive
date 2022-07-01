@@ -234,13 +234,15 @@ class ScraperController extends Controller
             }
         }
 
+        return $this->results;
+
         if (count($numOfResults) >= 1) {
             $bestMatch = array_search(max($numOfResults), $numOfResults);
     
             $keys = array_keys($this->results);
             $this->results = $this->results[$keys[$bestMatch]];
             $this->results['address'] = $keys[$bestMatch];
-        }
+        } 
 
         
 
