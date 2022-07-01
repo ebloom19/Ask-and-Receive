@@ -20533,7 +20533,7 @@ readers do not read off random characters that represent icons */
   align-items: center;
   width: 90%;
   margin: 40px auto;
-  min-width: 60em;
+  min-width: 50vw;
   position: relative;
   padding: 5% 3em;
   box-sizing: border-box;
