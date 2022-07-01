@@ -6,7 +6,7 @@
                  :is-full-page="fullPage"/>
 
         <form @submit.prevent="submit" @keydown="form.onKeydown($event)">
-            <div v-if="$isMobile()" class="form-group">
+            <div v-if="this.$isMobile()" class="form-group">
                 <label for="streetNumber">Street Number</label>
                 <input type="text" name="streetNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
