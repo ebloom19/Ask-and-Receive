@@ -9,10 +9,11 @@
         <title>Ask & Receive</title>
 
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{env("GOOGLE_API")}}&libraries=places"></script>
+
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-        <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key={{env('GOOGLE_API')}}"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">

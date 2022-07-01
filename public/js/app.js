@@ -5375,6 +5375,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.es.js");
 /* harmony import */ var vue_toastify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-toastify */ "./node_modules/vue-toastify/dist/vue-toastify.umd.min.js");
 /* harmony import */ var vue_toastify__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_toastify__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_google_autocomplete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-google-autocomplete */ "./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
@@ -5455,6 +5456,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
 
 
@@ -5523,9 +5526,6 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
           }
         }, _callee);
       }))();
-    },
-    mounted: function mounted() {
-      var autocomplete = new google.maps.places.Autocomplete(this.$refs["origin"]);
     }
   }
 });
@@ -39427,6 +39427,435 @@ var e=Object.defineProperty,t=Object.prototype.hasOwnProperty,s=Object.getOwnPro
 
 /***/ }),
 
+/***/ "./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue":
+/*!****************************************************************************!*\
+  !*** ./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _VueGoogleAutocomplete_vue_vue_type_template_id_a72a90ea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VueGoogleAutocomplete.vue?vue&type=template&id=a72a90ea& */ "./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=template&id=a72a90ea&");
+/* harmony import */ var _VueGoogleAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VueGoogleAutocomplete.vue?vue&type=script&lang=js& */ "./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=script&lang=js&");
+/* harmony import */ var _vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _VueGoogleAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _VueGoogleAutocomplete_vue_vue_type_template_id_a72a90ea___WEBPACK_IMPORTED_MODULE_0__.render,
+  _VueGoogleAutocomplete_vue_vue_type_template_id_a72a90ea___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+    const ADDRESS_COMPONENTS = {
+        subpremise : 'short_name',
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        administrative_area_level_2: 'long_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    const CITIES_TYPE = ['locality', 'administrative_area_level_3'];
+    const REGIONS_TYPE = ['locality', 'sublocality', 'postal_code', 'country',
+        'administrative_area_level_1', 'administrative_area_level_2'];
+
+    /*
+      By default, we're only including basic place data because requesting these 
+      fields place data is not additionally charged by Google. Please refer to:
+
+      https://developers.google.com/maps/billing/understanding-cost-of-use#basic-data
+    */
+    const BASIC_DATA_FIELDS = ['address_components', 'adr_address', 'alt_id', 
+        'formatted_address', 'geometry', 'icon', 'id', 'name', 
+        'business_status', 'photo', 'place_id', 'scope', 'type', 'url', 
+        'utc_offset_minutes', 'vicinity'];
+
+    /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+        name: 'VueGoogleAutocomplete',
+
+        props: {
+          id: {
+            type: String,
+            required: true
+          },
+
+          classname: String,
+
+          placeholder: {
+            type: String,
+            default: 'Start typing'
+          },
+
+          disabled: {
+            type: Boolean,
+            default: false
+          },
+
+          types: {
+            type: String,
+            default: 'address'
+          },
+
+          fields: {
+            type: Array,
+            default: function() {
+              return BASIC_DATA_FIELDS;
+            },
+          },
+
+          country: {
+            type: [String, Array],
+            default: null
+          },
+
+          enableGeolocation: {
+            type: Boolean,
+            default: false
+          },
+
+          geolocationOptions: {
+            type: Object,
+            default: null
+          }
+        },
+
+        data() {
+            return {
+                /**
+                 * The Autocomplete object.
+                 *
+                 * @type {Autocomplete}
+                 * @link https://developers.google.com/maps/documentation/javascript/reference#Autocomplete
+                 */
+                autocomplete: null,
+
+                /**
+                 * Autocomplete input text
+                 * @type {String}
+                 */
+                autocompleteText: '',
+
+                geolocation: {
+                    /**
+                     * Google Geocoder Objet
+                     * @type {Geocoder}
+                     * @link https://developers.google.com/maps/documentation/javascript/reference#Geocoder
+                     */
+                    geocoder: null,
+
+                    /**
+                     * Filled after geolocate result
+                     * @type {Coordinates}
+                     * @link https://developer.mozilla.org/en-US/docs/Web/API/Coordinates
+                     */
+                    loc: null,
+
+                    /**
+                     * Filled after geolocate result
+                     * @type {Position}
+                     * @link https://developer.mozilla.org/en-US/docs/Web/API/Position
+                     */
+                    position: null
+                }
+            }
+        },
+
+        watch: {
+            autocompleteText: function (newVal, oldVal) {
+	            this.$emit('inputChange', { newVal, oldVal }, this.id);
+            },
+            country: function(newVal, oldVal) {
+              this.autocomplete.setComponentRestrictions({
+                country: this.country === null ? [] : this.country
+              });
+            }
+        },
+
+        mounted: function() {
+          const options = {};
+
+          if (this.types) {
+            options.types = [this.types];
+          }
+
+          if (this.country) {
+            options.componentRestrictions = {
+              country: this.country
+            };
+          }
+
+          this.autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById(this.id),
+                options
+            );
+
+          this.autocomplete.setFields(this.fields);
+
+          this.autocomplete.addListener('place_changed', this.onPlaceChanged);
+        },
+
+        methods: {
+            /**
+             * When a place changed
+             */
+            onPlaceChanged() {
+                let place = this.autocomplete.getPlace();
+
+                if (!place.geometry) {
+                  // User entered the name of a Place that was not suggested and
+                  // pressed the Enter key, or the Place Details request failed.
+                  this.$emit('no-results-found', place, this.id);
+                  return;
+                }
+
+                if (place.address_components !== undefined) {
+                    // return returnData object and PlaceResult object
+                    this.$emit('placechanged', this.formatResult(place), place, this.id);
+
+                    // update autocompleteText then emit change event
+                    this.autocompleteText = document.getElementById(this.id).value
+                    this.onChange()
+                }
+            },
+
+            /**
+             * When the input gets focus
+             */
+            onFocus() {
+              this.biasAutocompleteLocation();
+              this.$emit('focus');
+            },
+
+            /**
+             * When the input loses focus
+             */
+            onBlur() {
+              this.$emit('blur');
+            },
+
+            /**
+             * When the input got changed
+             */
+            onChange() {
+              this.$emit('change', this.autocompleteText);
+            },
+
+            /**
+             * When a key gets pressed
+             * @param  {Event} event A keypress event
+             */
+            onKeyPress(event) {
+              this.$emit('keypress', event);
+            },
+
+            /**
+             * When a keyup occurs
+             * @param  {Event} event A keyup event
+             */
+            onKeyUp(event) {
+              this.$emit('keyup', event);
+            },
+
+            /**
+             * Clear the input
+             */
+            clear() {
+              this.autocompleteText = ''
+            },
+
+            /**
+             * Focus the input
+             */
+            focus() {
+              this.$refs.autocomplete.focus()
+            },
+
+            /**
+             * Blur the input
+             */
+            blur() {
+              this.$refs.autocomplete.blur()
+            },
+
+            /**
+             * Update the value of the input
+             * @param  {String} value
+             */
+            update (value) {
+              this.autocompleteText = value
+            },
+
+            /**
+             * Update the coordinates of the input
+             * @param  {Coordinates} value
+             */
+            updateCoordinates (value) {
+                if (!value && !(value.lat || value.lng)) return;
+                if (!this.geolocation.geocoder) this.geolocation.geocoder = new google.maps.Geocoder();
+                this.geolocation.geocoder.geocode({'location': value}, (results, status) => {
+                    if (status === 'OK') {
+                        results = this.filterGeocodeResultTypes(results);
+                        if (results[0]) {
+                            this.$emit('placechanged', this.formatResult(results[0]), results[0], this.id);
+                            this.update(results[0].formatted_address);
+                        } else {
+                            this.$emit('error', 'no result for provided coordinates');
+                        }
+                    } else {
+                        this.$emit('error', 'error getting address from coords');
+                    }
+                })
+            },
+
+            /**
+             * Update location based on navigator geolocation
+             */
+            geolocate () {
+                this.updateGeolocation ((geolocation, position) => {
+                    this.updateCoordinates(geolocation)
+                })
+            },
+
+            /**
+             * Update internal location from navigator geolocation
+             * @param  {Function} (geolocation, position)
+             */
+            updateGeolocation (callback = null) {
+                if (navigator.geolocation) {
+                    let options = {};
+                    if(this.geolocationOptions) Object.assign(options, this.geolocationOptions);
+                    navigator.geolocation.getCurrentPosition(position => {
+                        let geolocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        this.geolocation.loc = geolocation;
+                        this.geolocation.position = position;
+
+                        if (callback) callback(geolocation, position);
+                    }, err => {
+                        this.$emit('error', 'Cannot get Coordinates from navigator', err);
+                    }, options);
+                }
+            },
+
+
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            biasAutocompleteLocation () {
+                if (this.enableGeolocation) {
+                    this.updateGeolocation((geolocation, position) => {
+                        let circle = new google.maps.Circle({
+                            center: geolocation,
+                            radius: position.coords.accuracy
+                        });
+                        this.autocomplete.setBounds(circle.getBounds());
+                    })
+                }
+            },
+
+            /**
+             * Format result from Geo google APIs
+             * @param place
+             * @returns {{formatted output}}
+             */
+            formatResult (place) {
+                let returnData = {};
+                for (let i = 0; i < place.address_components.length; i++) {
+                    let addressType = place.address_components[i].types[0];
+
+                    if (ADDRESS_COMPONENTS[addressType]) {
+                        let val = place.address_components[i][ADDRESS_COMPONENTS[addressType]];
+                        returnData[addressType] = val;
+                    }
+                }
+
+                returnData['latitude'] = place.geometry.location.lat();
+                returnData['longitude'] = place.geometry.location.lng();
+                return returnData
+            },
+
+            /**
+             * Extract configured types out of raw result as
+             * Geocode API does not allow to do it
+             * @param results
+             * @returns {GeocoderResult}
+             * @link https://developers.google.com/maps/documentation/javascript/reference#GeocoderResult
+             */
+            filterGeocodeResultTypes (results) {
+                if (!results || !this.types) return results;
+                let output = [];
+                let types = [this.types];
+                if (types.includes('(cities)')) types = types.concat(CITIES_TYPE);
+                if (types.includes('(regions)')) types = types.concat(REGIONS_TYPE);
+
+                for (let r of results) {
+                    for (let t of r.types) {
+                        if (types.includes(t)) {
+                            output.push(r);
+                            break;
+                        }
+                    }
+                }
+                return output;
+            }
+        }
+    });
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Search.vue":
 /*!********************************************!*\
   !*** ./resources/js/components/Search.vue ***!
@@ -39482,6 +39911,39 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _vue_loader_lib_index_js_vue_loader_options_VueGoogleAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/index.js??vue-loader-options!./VueGoogleAutocomplete.vue?vue&type=script&lang=js& */ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_vue_loader_lib_index_js_vue_loader_options_VueGoogleAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=template&id=a72a90ea&":
+/*!***********************************************************************************************************!*\
+  !*** ./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=template&id=a72a90ea& ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_VueGoogleAutocomplete_vue_vue_type_template_id_a72a90ea___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_VueGoogleAutocomplete_vue_vue_type_template_id_a72a90ea___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_VueGoogleAutocomplete_vue_vue_type_template_id_a72a90ea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../vue-loader/lib/index.js??vue-loader-options!./VueGoogleAutocomplete.vue?vue&type=template&id=a72a90ea& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=template&id=a72a90ea&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Search.vue?vue&type=template&id=5026ffd3&":
 /*!***************************************************************************!*\
   !*** ./resources/js/components/Search.vue?vue&type=template&id=5026ffd3& ***!
@@ -39495,6 +39957,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Search_vue_vue_type_template_id_5026ffd3___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Search_vue_vue_type_template_id_5026ffd3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Search.vue?vue&type=template&id=5026ffd3& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Search.vue?vue&type=template&id=5026ffd3&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=template&id=a72a90ea&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-google-autocomplete/src/VueGoogleAutocomplete.vue?vue&type=template&id=a72a90ea& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("input", {
+    directives: [
+      {
+        name: "model",
+        rawName: "v-model",
+        value: _vm.autocompleteText,
+        expression: "autocompleteText",
+      },
+    ],
+    ref: "autocomplete",
+    class: _vm.classname,
+    attrs: {
+      type: "text",
+      id: _vm.id,
+      placeholder: _vm.placeholder,
+      disabled: _vm.disabled,
+    },
+    domProps: { value: _vm.autocompleteText },
+    on: {
+      focus: function ($event) {
+        return _vm.onFocus()
+      },
+      blur: function ($event) {
+        return _vm.onBlur()
+      },
+      change: _vm.onChange,
+      keypress: _vm.onKeyPress,
+      keyup: _vm.onKeyUp,
+      input: function ($event) {
+        if ($event.target.composing) {
+          return
+        }
+        _vm.autocompleteText = $event.target.value
+      },
+    },
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
 
 
 /***/ }),
@@ -39712,127 +40234,142 @@ var render = function () {
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "suburb" } }, [_vm._v("Suburb")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.suburb,
-                  expression: "form.suburb",
-                },
-              ],
-              attrs: { type: "text", name: "suburb" },
-              domProps: { value: _vm.form.suburb },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "suburb", $event.target.value)
-                },
-              },
-            }),
-            _vm._v(" "),
-            _vm.form.errors.has("suburb")
-              ? _c("div", {
-                  domProps: {
-                    innerHTML: _vm._s(_vm.form.errors.get("suburb")),
-                  },
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", { attrs: { for: "suburb" } }, [_vm._v("Suburb")]),
+              _vm._v(" "),
+              _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.form.state,
-                    expression: "form.state",
+                    value: _vm.form.suburb,
+                    expression: "form.suburb",
                   },
                 ],
-                attrs: { name: "state" },
+                attrs: { type: "text", name: "suburb" },
+                domProps: { value: _vm.form.suburb },
                 on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.form,
-                      "state",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "suburb", $event.target.value)
                   },
                 },
-              },
-              _vm._l(_vm.states, function (st) {
-                return _c("option", { key: st }, [_vm._v(_vm._s(st))])
               }),
-              0
-            ),
-            _vm._v(" "),
-            _vm.form.errors.has("state")
-              ? _c("div", {
-                  domProps: { innerHTML: _vm._s(_vm.form.errors.get("state")) },
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "postCode" } }, [_vm._v("Post Code")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
+              _vm._v(" "),
+              _vm.form.errors.has("suburb")
+                ? _c("div", {
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("suburb")),
+                    },
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
+              _vm._v(" "),
+              _c(
+                "select",
                 {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.postCode,
-                  expression: "form.postCode",
-                },
-              ],
-              attrs: { type: "number", name: "postCode" },
-              domProps: { value: _vm.form.postCode },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "postCode", $event.target.value)
-                },
-              },
-            }),
-            _vm._v(" "),
-            _vm.form.errors.has("postCode")
-              ? _c("div", {
-                  domProps: {
-                    innerHTML: _vm._s(_vm.form.errors.get("postCode")),
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.state,
+                      expression: "form.state",
+                    },
+                  ],
+                  attrs: { name: "state" },
+                  on: {
+                    change: function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "state",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    },
                   },
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _c("input", {
-              ref: "origin",
-              attrs: { type: "text", placeholder: "Origin" },
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-custom",
-                attrs: { type: "submit", disabled: _vm.form.busy },
-              },
-              [_vm._v("Submit")]
-            ),
-          ]),
+                },
+                _vm._l(_vm.states, function (st) {
+                  return _c("option", { key: st }, [_vm._v(_vm._s(st))])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _vm.form.errors.has("state")
+                ? _c("div", {
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("state")),
+                    },
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "postCode" } }, [
+                _vm._v("Post Code"),
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.postCode,
+                    expression: "form.postCode",
+                  },
+                ],
+                attrs: { type: "number", name: "postCode" },
+                domProps: { value: _vm.form.postCode },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "postCode", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _vm.form.errors.has("postCode")
+                ? _c("div", {
+                    domProps: {
+                      innerHTML: _vm._s(_vm.form.errors.get("postCode")),
+                    },
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c("vue-google-autocomplete", {
+                attrs: {
+                  id: "map",
+                  classname: "form-control",
+                  placeholder: "Suburb",
+                },
+                on: { placechanged: _vm.getAddressData },
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-custom",
+                  attrs: { type: "submit", disabled: _vm.form.busy },
+                },
+                [_vm._v("Submit")]
+              ),
+            ],
+            1
+          ),
         ]
       ),
     ],

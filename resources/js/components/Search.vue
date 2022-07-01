@@ -58,7 +58,8 @@
                 <input type="number" name="postCode" v-model="form.postCode">
                 <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
 
-                <input type="text" placeholder="Origin" ref="origin" />
+                <vue-google-autocomplete id="map" classname="form-control" placeholder="Suburb" v-on:placechanged="getAddressData">
+                </vue-google-autocomplete>
 
                 <button type="submit" :disabled="form.busy" class="btn btn-custom">Submit</button>
             </div>
@@ -74,6 +75,7 @@
     import '../../css/app.css';
     import Form from 'vform';
     import VueToastify from "vue-toastify";
+    import VueGoogleAutocomplete from "vue-google-autocomplete";
 
     Vue.use(VueToastify, {
         position: "top-right"
@@ -126,9 +128,6 @@
                     postCode: this.form.postCode
                 });
                 // const response = await this.form.post('/results');
-            },
-            mounted() {
-                const autocomplete = new google.maps.places.Autocomplete(this.$refs["origin"]);
             },
         },
     }
