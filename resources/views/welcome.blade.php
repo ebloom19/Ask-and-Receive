@@ -11,7 +11,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -31,40 +31,6 @@
                 color: black;
                 margin: 15px 0;
                 padding: 0 12px;
-            }
-
-            .resultCard {
-                display: flex;
-                align-items: center;
-                //width: 50vw;
-                width: 90%;
-                margin: auto;
-                max-width: 22em;
-
-                position: relative;
-                padding: 30% 2em;
-                box-sizing: border-box;
-
-                $border: 5px;
-                color: #FFF;
-                background: #000;
-                background-clip: padding-box; /* !importanté */
-                border: solid $border transparent; /* !importanté */
-                border-radius: 1em;
-
-                &:before {
-                    content: '';
-                    position: absolute;
-                    top: 0; right: 0; bottom: 0; left: 0;
-                    z-index: -1;
-                    margin: -$border; /* !importanté */
-                    border-radius: inherit; /* !importanté */
-                    background: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
-
-                    /* background-color: #85FFBD; */
-                    /* border-radius: 5px; */
-                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-                }
             }
 
             .propertyDetails {

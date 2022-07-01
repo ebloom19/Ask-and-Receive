@@ -10252,3 +10252,33 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.resultCard {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin: 40px auto;
+  max-width: 50em;
+  position: relative;
+  padding: 30% 2em;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  background: #fff;
+  background-clip: padding-box; /* !importanté */
+  border: solid 7px transparent; /* !importanté */
+  border-radius: 1em;
+}
+.resultCard:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -7px; /* !importanté */
+  border-radius: inherit; /* !importanté */
+  background: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+  background-color: #85FFBD;
+  /* border-radius: 5px; */
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
