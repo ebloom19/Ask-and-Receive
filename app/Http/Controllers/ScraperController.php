@@ -198,15 +198,15 @@ class ScraperController extends Controller
                 }
             } 
 
-            return $response;
-    
+            
             if(isset($this->searchTerms['unitNumber'])) {
-                $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
+                $this->investorMetrics = reset($response)["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
             } else {
-                $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds];
+                $this->investorMetrics = reset($response)["property_types"]["HOUSE"]["bedrooms"][$this->numberOfBeds];
             }
         }
-                            
+        
+        return $this->investorMetrics;
 
         // $data = new PropertyData;
         // $data->property = $this->results;
