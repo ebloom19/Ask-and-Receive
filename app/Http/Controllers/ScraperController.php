@@ -233,7 +233,7 @@ class ScraperController extends Controller
         $numOfResults = [];
 
         foreach ($this->results as $result) {
-            array_push($numOfResults, count($result)['listingHistory']);
+            array_push($numOfResults, count($result['listingHistory']));
             $numOfResults[array_key_first($result)] = count($result['listingHistory']);
         }
 
