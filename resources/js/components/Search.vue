@@ -6,7 +6,7 @@
                  :is-full-page="fullPage"/>
 
         <form @submit.prevent="submit" @keydown="form.onKeydown($event)">
-            <div v-if="this.$isMobile()" class="form-group">
+            <div v-if="$isMobile()" class="form-group">
                 <label for="streetNumber">Street Number</label>
                 <input type="text" name="streetNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
@@ -71,15 +71,13 @@
     import 'vue-loading-overlay/dist/vue-loading.css';
     import '../../css/app.css';
     import Form from 'vform';
-    import VueToastify from "vue-toastify";
-    import VueMobileDetection from 'vue-mobile-detection';
+    import Vue3MobileDetection from "vue3-mobile-detection";
 
+    Vue.use(Vue3MobileDetection);
 
     Vue.use(VueToastify, {
         position: "top-right"
     });
-
-    Vue.use(VueMobileDetection);
 
     window.$ = window.jQuery = require('jquery')
 
@@ -140,6 +138,10 @@
                 //     postCode: this.form.postCode
                 // }), '&&&&', this.form);
             }
+        },
+        created() {
+            // Use in js
+            console.log(this.$isMobile());
         }
     }
     

@@ -30,6 +30,7 @@
         "vform": "^2.1.2",
         "vue-loading-overlay": "^3.4.2",
         "vue-mobile-detection": "^2.0.1",
-        "vue-toastify": "^1.8.1"
+        "vue-toastify": "^1.8.1",
+        "vue3-mobile-detection": "^1.0.5"
     }
 }
