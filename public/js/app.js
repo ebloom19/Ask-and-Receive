@@ -5433,8 +5433,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 
@@ -39768,41 +39766,26 @@ var render = function () {
             _vm._v(" "),
             _c("label", { attrs: { for: "postCode" } }, [_vm._v("Post Code")]),
             _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.postCode,
-                    expression: "form.postCode",
-                  },
-                ],
-                attrs: { name: "postCode" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.form,
-                      "postCode",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  },
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.postCode,
+                  expression: "form.postCode",
+                },
+              ],
+              attrs: { type: "number", name: "postCode" },
+              domProps: { value: _vm.form.postCode },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "postCode", $event.target.value)
                 },
               },
-              _vm._l(_vm.states, function (st) {
-                return _c("option", { key: st }, [_vm._v(_vm._s(st))])
-              }),
-              0
-            ),
+            }),
             _vm._v(" "),
             _vm.form.errors.has("postCode")
               ? _c("div", {

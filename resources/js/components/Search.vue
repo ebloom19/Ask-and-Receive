@@ -37,9 +37,7 @@
                 <div v-if="form.errors.has('state')" v-html="form.errors.get('state')" />
 
                 <label for="postCode">Post Code</label>
-                <select name="postCode" v-model="form.postCode">
-                    <option v-for="st in states" :key="st" >{{ st }}</option>
-                </select>
+                <input type="number" name="postCode" v-model="form.postCode">
                 <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
 
                 <button type="submit" :disabled="form.busy" class="btn btn-custom">Submit</button>
