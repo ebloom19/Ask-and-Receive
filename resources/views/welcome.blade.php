@@ -60,76 +60,74 @@
             </div>
             <div class="cards">
                 @isset($propertyData)     
-                    @foreach ($propertyData as $key => $details)
-                        <div class="resultCard">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ $details['address'] }}</h3>
-                                @if (isset($details['propertyInfo']))
-                                    <div class="propertyDetails">               
-                                        @foreach ($details['propertyInfo'] as $feature)   
-                                            @if ((int)filter_var($feature, FILTER_SANITIZE_NUMBER_INT) != 0)                                               
-                                                <div class="d-flex flex-row m-2">
-                                                    @if (str_contains($feature, "Bed"))                                                    
-                                                    <i class="fas fa-bed mt-1"></i>
-                                                    @endif
-                                                    @if (str_contains($feature, "Bath"))                                                    
-                                                    <i class="fas fa-bath mt-1"></i>
-                                                    @endif
-                                                    @if (str_contains($feature, "Car"))                                                    
-                                                    <i class="fas fa-car mt-1"></i>
-                                                    @endif
-                                                    @if (str_contains($feature, "Size"))                                                    
-                                                    <i class="fas fa-up-right-and-down-left-from-center mt-1"></i>
-                                                    @endif
-                                                    <p class="card-text ml-2">{{ (int)filter_var($feature, FILTER_SANITIZE_NUMBER_INT) }}</p>
-                                                </div>              
-                                            @endif 
+                    <div class="resultCard">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ $propertyData['address'] }}</h3>
+                            @if (isset($propertyData['propertyInfo']))
+                                <div class="propertyDetails">               
+                                    @foreach ($propertyData['propertyInfo'] as $feature)   
+                                        @if ((int)filter_var($feature, FILTER_SANITIZE_NUMBER_INT) != 0)                                               
+                                            <div class="d-flex flex-row m-2">
+                                                @if (str_contains($feature, "Bed"))                                                    
+                                                <i class="fas fa-bed mt-1"></i>
+                                                @endif
+                                                @if (str_contains($feature, "Bath"))                                                    
+                                                <i class="fas fa-bath mt-1"></i>
+                                                @endif
+                                                @if (str_contains($feature, "Car"))                                                    
+                                                <i class="fas fa-car mt-1"></i>
+                                                @endif
+                                                @if (str_contains($feature, "Size"))                                                    
+                                                <i class="fas fa-up-right-and-down-left-from-center mt-1"></i>
+                                                @endif
+                                                <p class="card-text ml-2">{{ (int)filter_var($feature, FILTER_SANITIZE_NUMBER_INT) }}</p>
+                                            </div>              
+                                        @endif 
+                                    @endforeach
+                                </div>                                  
+                            @endif
+                            <div class="container d-flex flex-row justify-content-between mt-2 mb-5">
+                                @if (isset($propertyData['listingHistory']))     
+                                    <div class="w-40">             
+                                        <h4 class="card-subtitle mb-2 text-muted">Sale Listing History</h4>
+                                        @foreach ($details['listingHistory'] as $info)
+                                            <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
                                         @endforeach
-                                    </div>                                  
+                                    </div>                   
                                 @endif
-                                <div class="container d-flex flex-row justify-content-between mt-2 mb-5">
-                                    @if (isset($details['listingHistory']))     
-                                        <div class="w-40">             
-                                            <h4 class="card-subtitle mb-2 text-muted">Sale Listing History</h4>
-                                            @foreach ($details['listingHistory'] as $info)
-                                                <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
-                                            @endforeach
-                                        </div>                   
-                                    @endif
-                                    @if (isset($details['rentalHistory']))
-                                        <div class="w-40">          
-                                            <h4 class="card-subtitle mb-2 text-muted">Rental Listing History</h4>
-                                            @foreach ($details['rentalHistory'] as $info)
-                                                <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                </div>
-
-                                @php    
-                                    if(isset($investorMetrics['investor_metrics'])) {
-                                        $median = $investorMetrics['investor_metrics']['median_sold_price'];
-                                        $medain5YAgo = $investorMetrics['investor_metrics']['median_sold_price_five_years_ago'];
-    
-                                        $percentage = $median - $medain5YAgo;
-                                        $percentage = $medain5YAgo / $percentage;
-                                    }
-                                @endphp
-              
-                                @if (isset($investorMetrics['investor_metrics']))      
-                                    <div class="d-flex flex-row">
-                                        <h4 class="card-subtitle mb-2 text-muted">Scarborough View</h4>
-                                        <small class="mt-0 m-3"> - for {{$numberOfBeds == "ALL" ? 'all' : "{$numberOfBeds} Bedroom"}}  {{isset($searchTerms['unitNumber']) ? 'Units' : 'Houses'}}</small>
+                                @if (isset($propertyData['rentalHistory']))
+                                    <div class="w-40">          
+                                        <h4 class="card-subtitle mb-2 text-muted">Rental Listing History</h4>
+                                        @foreach ($details['rentalHistory'] as $info)
+                                            <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
+                                        @endforeach
                                     </div>
-                                    <p class="card-text">Average Sale Price : ${{ trim(strrev(chunk_split(strrev($investorMetrics['investor_metrics']['median_sold_price']), 3, ','))) }}</p>
-                                    <p class="card-text">Average Sale Price in the past 5 years has risen by {{ round($percentage, 2) }}%</p>
-                                    <p class="card-text">Average Rent : ${{ $investorMetrics['investor_metrics']['median_rental_price'] }} Weekly</p>
-                                    <p class="card-text">Rental Yeild : {{ round((float)$investorMetrics['investor_metrics']['rental_yield'] * 100) }}%</p>
                                 @endif
-                                
                             </div>
+
+                            @php    
+                                if(isset($investorMetrics['investor_metrics'])) {
+                                    $median = $investorMetrics['investor_metrics']['median_sold_price'];
+                                    $medain5YAgo = $investorMetrics['investor_metrics']['median_sold_price_five_years_ago'];
+
+                                    $percentage = $median - $medain5YAgo;
+                                    $percentage = $medain5YAgo / $percentage;
+                                }
+                            @endphp
+            
+                            @if (isset($investorMetrics['investor_metrics']))      
+                                <div class="d-flex flex-row">
+                                    <h4 class="card-subtitle mb-2 text-muted">Scarborough View</h4>
+                                    <small class="mt-0 m-3"> - for {{$numberOfBeds == "ALL" ? 'all' : "{$numberOfBeds} Bedroom"}}  {{isset($searchTerms['unitNumber']) ? 'Units' : 'Houses'}}</small>
+                                </div>
+                                <p class="card-text">Average Sale Price : ${{ trim(strrev(chunk_split(strrev($investorMetrics['investor_metrics']['median_sold_price']), 3, ','))) }}</p>
+                                <p class="card-text">Average Sale Price in the past 5 years has risen by {{ round($percentage, 2) }}%</p>
+                                <p class="card-text">Average Rent : ${{ $investorMetrics['investor_metrics']['median_rental_price'] }} Weekly</p>
+                                <p class="card-text">Rental Yeild : {{ round((float)$investorMetrics['investor_metrics']['rental_yield'] * 100) }}%</p>
+                            @endif
+                            
                         </div>
-                    @endforeach
+                    </div>
                 @endisset
                 @if (empty($propertyData) && $_SERVER['REQUEST_URI'] != '/')
                     <h5 class="m-3">No Results Found</h5>
