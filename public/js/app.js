@@ -5435,9 +5435,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 
 
@@ -10658,7 +10655,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n    font-family: 'Nunito', sans-serif;\n    background-color: #1a202c;\n    color: white;\n}\n\nh1 {\n    color: white;\n}\n\n.noReuslts {\n    color: white;\n}\n\n.mainContainer {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n\n.formInput {\n    color: white;\n}\n\n.form-group {\n    display: flex;\n    flex-direction: column;\n}\n\n.form-group > select, .form-group > input {\n    margin: 10px 0;\n}\n\n.noResults {\n    color: white;\n}\n\n.formMain {\n    display: flex;\n\n}\n\n.formMain > input, .formMain > select, .formMain > button {\n    margin: 10px 5px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n    font-family: 'Nunito', sans-serif;\n    color: black;\n}\n\n.mainContainer {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n\nform {\n    padding: 20px;\n    background-color: #85FFBD;\n    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);\n    border-radius: 5px;\n    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\n}\n\nform > .form-group {\n    margin: 15px;\n}\n\n.form-group > label {\n    margin: 0 10px;\n}\n\n.form-group > button {\n    margin: 0 10px;\n}\n\n.btn-custom {\n    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39578,18 +39575,18 @@ var render = function () {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.form.streetNumber,
-                    expression: "form.streetNumber",
+                    value: _vm.form.unitNumber,
+                    expression: "form.unitNumber",
                   },
                 ],
                 attrs: { type: "text", name: "unitNumber" },
-                domProps: { value: _vm.form.streetNumber },
+                domProps: { value: _vm.form.unitNumber },
                 on: {
                   input: function ($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.form, "streetNumber", $event.target.value)
+                    _vm.$set(_vm.form, "unitNumber", $event.target.value)
                   },
                 },
               }),
@@ -39611,18 +39608,18 @@ var render = function () {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.form.streetNumber,
-                    expression: "form.streetNumber",
+                    value: _vm.form.streetName,
+                    expression: "form.streetName",
                   },
                 ],
                 attrs: { type: "text", name: "streetName" },
-                domProps: { value: _vm.form.streetNumber },
+                domProps: { value: _vm.form.streetName },
                 on: {
                   input: function ($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.form, "streetNumber", $event.target.value)
+                    _vm.$set(_vm.form, "streetName", $event.target.value)
                   },
                 },
               }),
@@ -39701,18 +39698,18 @@ var render = function () {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.form.streetNumber,
-                  expression: "form.streetNumber",
+                  value: _vm.form.suburb,
+                  expression: "form.suburb",
                 },
               ],
               attrs: { type: "text", name: "suburb" },
-              domProps: { value: _vm.form.streetNumber },
+              domProps: { value: _vm.form.suburb },
               on: {
                 input: function ($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.form, "streetNumber", $event.target.value)
+                  _vm.$set(_vm.form, "suburb", $event.target.value)
                 },
               },
             }),
@@ -39724,9 +39721,7 @@ var render = function () {
                   },
                 })
               : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
+            _vm._v(" "),
             _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
             _vm._v(" "),
             _c(
@@ -39770,9 +39765,7 @@ var render = function () {
                   domProps: { innerHTML: _vm._s(_vm.form.errors.get("state")) },
                 })
               : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
+            _vm._v(" "),
             _c("label", { attrs: { for: "postCode" } }, [_vm._v("Post Code")]),
             _vm._v(" "),
             _c(
@@ -39782,8 +39775,8 @@ var render = function () {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.form.state,
-                    expression: "form.state",
+                    value: _vm.form.postCode,
+                    expression: "form.postCode",
                   },
                 ],
                 attrs: { name: "postCode" },
@@ -39799,7 +39792,7 @@ var render = function () {
                       })
                     _vm.$set(
                       _vm.form,
-                      "state",
+                      "postCode",
                       $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                     )
                   },
@@ -39818,16 +39811,16 @@ var render = function () {
                   },
                 })
               : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-custom",
+                attrs: { type: "submit", disabled: _vm.form.busy },
+              },
+              [_vm._v("Submit")]
+            ),
           ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { type: "submit", disabled: _vm.form.busy },
-            },
-            [_vm._v("Submit")]
-          ),
         ]
       ),
     ],

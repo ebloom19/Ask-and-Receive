@@ -11,10 +11,10 @@
                 <input type="text" name="streetNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
                 <label for="unitNumber">Unit Number</label>
-                <input type="text" name="unitNumber" v-model="form.streetNumber">
+                <input type="text" name="unitNumber" v-model="form.unitNumber">
                 <div v-if="form.errors.has('unitNumber')" v-html="form.errors.get('unitNumber')" />
                 <label for="streetName">Street Name</label>
-                <input type="text" name="streetName" v-model="form.streetNumber">
+                <input type="text" name="streetName" v-model="form.streetName">
                 <div v-if="form.errors.has('streetName')" v-html="form.errors.get('streetName')" />
                 <label for="streetType">Street Type</label>
                 <select name="streetType" v-model="form.streetType">
@@ -27,27 +27,24 @@
 
             <div class="form-group">
                 <label for="suburb">Suburb</label>
-                <input type="text" name="suburb" v-model="form.streetNumber">
+                <input type="text" name="suburb" v-model="form.suburb">
                 <div v-if="form.errors.has('suburb')" v-html="form.errors.get('suburb')" />
-            </div>
 
-            <div class="form-group">
                 <label for="state">State</label>
                 <select name="state" v-model="form.state">
                     <option v-for="st in states" :key="st" >{{ st }}</option>
                 </select>
                 <div v-if="form.errors.has('state')" v-html="form.errors.get('state')" />
-            </div>
 
-            <div class="form-group">
                 <label for="postCode">Post Code</label>
-                <select name="postCode" v-model="form.state">
+                <select name="postCode" v-model="form.postCode">
                     <option v-for="st in states" :key="st" >{{ st }}</option>
                 </select>
                 <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
+
+                <button type="submit" :disabled="form.busy" class="btn btn-custom">Submit</button>
             </div>
 
-            <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button>
         </form>
 
     </div>

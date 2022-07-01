@@ -1,15 +1,6 @@
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: #1a202c;
-    color: white;
-}
-
-h1 {
-    color: white;
-}
-
-.noReuslts {
-    color: white;
+    color: black;
 }
 
 .mainContainer {
@@ -19,28 +10,27 @@ h1 {
     justify-content: center;
 }
 
-.formInput {
-    color: white;
+form {
+    padding: 20px;
+    background-color: #85FFBD;
+    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
+form > .form-group {
+    margin: 15px;
 }
 
-.form-group > select, .form-group > input {
-    margin: 10px 0;
+.form-group > label {
+    margin: 0 10px;
 }
 
-.noResults {
-    color: white;
+.form-group > button {
+    margin: 0 10px;
 }
 
-.formMain {
-    display: flex;
-
+.btn-custom {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.formMain > input, .formMain > select, .formMain > button {
-    margin: 10px 5px;
-}

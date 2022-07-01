@@ -23,65 +23,48 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
-                background-color: #1a202c;
-                color: white;
-            }
-
-            h1 {
-                color: white;
-            }
-
-            .mainForm {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .noReuslts {
-                color: white;
-            }
-
-            .card {
-                margin: 15px 0;
-            }
-
-            .cards {
-                display: flex;
-                align-items: center;
-                flex-direction: column;
+                /* background-color: #1a202c; */
                 color: black;
             }
 
-            .mainContainer {
+            h1 {
+                color: black;
+                margin: 15px 0;
+                padding: 0 12px;
+            }
+
+            .card {
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                justify-content: center;
-            }
+                //width: 50vw;
+                width: 90%;
+                margin: auto;
+                max-width: 22em;
 
-            .formInput {
-                color: white;
-            }
+                position: relative;
+                padding: 30% 2em;
+                box-sizing: border-box;
 
-            .form-group {
-                display: flex;
-                flex-direction: column;
-            }
+                $border: 5px;
+                color: #FFF;
+                background: #000;
+                background-clip: padding-box; /* !importanté */
+                border: solid $border transparent; /* !importanté */
+                border-radius: 1em;
 
-            .form-group > select, .form-group > input {
-                margin: 10px 0;
-            }
-            
-            .noResults {
-                color: white;
-            }
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 0; right: 0; bottom: 0; left: 0;
+                    z-index: -1;
+                    margin: -$border; /* !importanté */
+                    border-radius: inherit; /* !importanté */
+                    background: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
 
-            .formMain {
-                display: flex;
-
-            }
-
-            .formMain > input, .formMain > select, .formMain > button {
-                margin: 10px 5px;
+                    /* background-color: #85FFBD; */
+                    /* border-radius: 5px; */
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                }
             }
 
             .propertyDetails {
@@ -106,35 +89,6 @@
         <div class="mainContainer" id="app">
             <div class="mainForm">
                 <h1>Ask & Receive</h1>
-        
-                {{-- <form class="form-group" method="post" action="{{ route('results') }}" accept-charset="UTF-8">
-                    @csrf
-
-                    <div class="formMain">
-                        <input type="text" name="streetNumber" placeholder="Street Number">
-                        <input type="number" name="unitNumber" placeholder="Unit Number">
-                        <input type="text" name="streetName" placeholder="Street Name">
-                        <select name="streetType">
-                            @foreach ($streetTypes as $st)
-                                <option value={{ $st }}>{{ $st }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="formMain">
-                        <input type="text" name="suburb" placeholder="Suburb">
-    
-                        <select name="state">
-                            @foreach ($states as $st => $state)
-                                <option value={{ $st }}>{{ $st }}</option>
-                            @endforeach
-                        </select>
-    
-                        <input type="number" name="postCode" placeholder="Post Code">
-                        <button type="submit">Submit</button>
-                    </div>
-                    
-                </form> --}}
 
                 <search></search>
             </div>
