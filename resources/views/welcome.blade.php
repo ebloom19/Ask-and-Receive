@@ -86,7 +86,7 @@
                                 @endif
                                 <div class="container d-flex flex-row justify-content-between mt-2">
                                     @if (isset($details['listingHistory']))     
-                                        <div class="m-2">             
+                                        <div class="w-40">             
                                             <h4 class="card-subtitle mb-2 text-muted">Sale Listing History:</h4>
                                             @foreach ($details['listingHistory'] as $info)
                                                 <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
@@ -94,7 +94,7 @@
                                         </div>                   
                                     @endif
                                     @if (isset($details['rentalHistory']))
-                                        <div class="m-2">          
+                                        <div class="w-40">          
                                             <h4 class="card-subtitle mb-2 text-muted">Rental Listing History:</h4>
                                             @foreach ($details['rentalHistory'] as $info)
                                                 <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
@@ -129,7 +129,7 @@
                     @endforeach
                 @endisset
                 @if (empty($propertyData) && $_SERVER['REQUEST_URI'] != '/')
-                    <p class="noReuslts">No Results Found</p>
+                    <h5 class="m-3">No Results Found</h5>
                 @endif
             </div>
         </div>
