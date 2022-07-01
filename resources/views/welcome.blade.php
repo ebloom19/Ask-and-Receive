@@ -90,7 +90,7 @@
                                 @if (isset($propertyData['listingHistory']))     
                                     <div class="w-40">             
                                         <h4 class="card-subtitle mb-2 text-muted">Sale Listing History</h4>
-                                        @foreach ($details['listingHistory'] as $info)
+                                        @foreach ($propertyData['listingHistory'] as $info)
                                             <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
                                         @endforeach
                                     </div>                   
@@ -98,7 +98,7 @@
                                 @if (isset($propertyData['rentalHistory']))
                                     <div class="w-40">          
                                         <h4 class="card-subtitle mb-2 text-muted">Rental Listing History</h4>
-                                        @foreach ($details['rentalHistory'] as $info)
+                                        @foreach ($propertyData['rentalHistory'] as $info)
                                             <p class="card-text">{{ isset($info[1]) ? "{$info[0]} : {$info[1]}" : $info[0] }}</p>        
                                         @endforeach
                                     </div>
