@@ -227,7 +227,11 @@ class ScraperController extends Controller
         $numOfResults = [];
 
         foreach ($this->results as $result) {
-            array_push($numOfResults, count($result['listingHistory']));
+            if (isset($result['listingHistory'])) {
+                array_push($numOfResults, count($result['listingHistory']));
+            } else {
+                array_push($numOfResults, 0);
+            }
         }
 
         $bestMatch = array_search(max($numOfResults), $numOfResults);
