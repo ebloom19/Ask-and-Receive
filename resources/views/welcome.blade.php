@@ -58,7 +58,7 @@
                 <search></search>
             </div>
             <div class="cards">
-                @isset($propertyData)     
+                @isset($propertyData['propertyInfo'])     
                     <div class="resultCard">
                         <div class="card-body">
                             <h3 class="card-title">{{ $propertyData['address'] }}</h3>
