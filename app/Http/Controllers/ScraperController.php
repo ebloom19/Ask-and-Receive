@@ -254,7 +254,7 @@ class ScraperController extends Controller
         // return [$investorMetrics, $numberOfBeds];
         // return $this->searchTerms['postCode'];
 
-        return view('welcome', compact('propertyData', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
+        return view('welcome', compact('propertyData', 'suburb', 'states', 'streetTypes', 'investorMetrics', 'numberOfBeds', 'searchTerms'));
         // return view('scraper');
     }
 }
