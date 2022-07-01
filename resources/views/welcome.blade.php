@@ -66,19 +66,21 @@
                                 <h3 class="card-title">{{ $address }}</h3>
                                 @if (isset($details['propertyInfo']))
                                     <div class="propertyDetails">               
-                                        @foreach ($details['propertyInfo'] as $feature)    
-                                            <div class="d-flex flex-row">
-                                                @if (str_contains($feature, "Bed"))                                                    
-                                                <i class="fas fa-bed"></i>
-                                                @endif
-                                                @if (str_contains($feature, "Bath"))                                                    
-                                                <i class="fas fa-bath"></i>
-                                                @endif
-                                                @if (str_contains($feature, "Car"))                                                    
-                                                <i class="fas fa-car"></i>
-                                                @endif
-                                                <p class="card-text ml-1">{{ (int)filter_var($feature, FILTER_SANITIZE_NUMBER_INT) }}</p>
-                                            </div>              
+                                        @foreach ($details['propertyInfo'] as $feature)   
+                                            @if ((int)filter_var($feature, FILTER_SANITIZE_NUMBER_INT) != 0)                                               
+                                                <div class="d-flex flex-row m-2">
+                                                    @if (str_contains($feature, "Bed"))                                                    
+                                                    <i class="fas fa-bed"></i>
+                                                    @endif
+                                                    @if (str_contains($feature, "Bath"))                                                    
+                                                    <i class="fas fa-bath"></i>
+                                                    @endif
+                                                    @if (str_contains($feature, "Car"))                                                    
+                                                    <i class="fas fa-car"></i>
+                                                    @endif
+                                                    <p class="card-text ml-2">{{ (int)filter_var($feature, FILTER_SANITIZE_NUMBER_INT) }}</p>
+                                                </div>              
+                                            @endif 
                                         @endforeach
                                     </div>                                  
                                 @endif
