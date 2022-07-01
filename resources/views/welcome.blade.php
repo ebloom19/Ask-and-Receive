@@ -33,7 +33,7 @@
                 padding: 0 12px;
             }
 
-            .card {
+            .resultCard {
                 display: flex;
                 align-items: center;
                 //width: 50vw;
@@ -95,7 +95,7 @@
             <div class="cards">
                 @isset($propertyData)     
                     @foreach ($propertyData as $address => $details)
-                        <div class="card">
+                        <div class="resultCard">
                             <div class="card-body">
                                 <h3 class="card-title">{{ $address }}</h3>
                                 @if (isset($details['propertyInfo']))
