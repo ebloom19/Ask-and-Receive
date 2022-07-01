@@ -239,7 +239,7 @@ class ScraperController extends Controller
 
         $bestMatch = array_keys($numOfResults, max($numOfResults));
 
-        return "{$bestMatch} * {$numOfResults}";
+        return $bestMatch;
 
 
 
