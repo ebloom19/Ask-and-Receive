@@ -66,8 +66,19 @@
                                 <h3 class="card-title">{{ $address }}</h3>
                                 @if (isset($details['propertyInfo']))
                                     <div class="propertyDetails">               
-                                        @foreach ($details['propertyInfo'] as $feature)                    
-                                            <p class="card-text">{{ $feature }}</p>
+                                        @foreach ($details['propertyInfo'] as $feature)    
+                                            <div class="d-flex flex-row">
+                                                @if (str_contains($feature, "Bed"))                                                    
+                                                    <i class="fas fa-bed-front"></i>
+                                                @endif
+                                                @if (str_contains($feature, "Bath"))                                                    
+                                                    <i class="fas fa-bath"></i>
+                                                @endif
+                                                @if (str_contains($feature, "Bath"))                                                    
+                                                    <i class="fas fa-car"></i>
+                                                @endif
+                                                <p class="card-text">{{ $feature }}</p>
+                                            </div>              
                                         @endforeach
                                     </div>                                  
                                 @endif
