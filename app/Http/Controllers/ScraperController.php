@@ -234,9 +234,7 @@ class ScraperController extends Controller
             }
         }
 
-        if (isset($numOfResults)) {
-
-            return max($numOfResults);
+        if (count($numOfResults) >= 1) {
             $bestMatch = array_search(max($numOfResults), $numOfResults);
     
             $keys = array_keys($this->results);
