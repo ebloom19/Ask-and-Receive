@@ -226,7 +226,13 @@ class ScraperController extends Controller
         $numberOfBeds = $this->numberOfBeds;
         $searchTerms = $this->searchTerms;
 
+        return $this->results;
+
         // Remove broken info 
+
+        foreach ($this->results as $result) {
+
+        }
 
 
         // return [$investorMetrics, $numberOfBeds];
