@@ -58,6 +58,8 @@
                 <input type="number" name="postCode" v-model="form.postCode">
                 <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
 
+                <input type="text" placeholder="Origin" ref="origin" />
+
                 <button type="submit" :disabled="form.busy" class="btn btn-custom">Submit</button>
             </div>
 
@@ -124,7 +126,10 @@
                     postCode: this.form.postCode
                 });
                 // const response = await this.form.post('/results');
-            }
+            },
+            mounted() {
+                const autocomplete = new google.maps.places.Autocomplete(this.$refs["origin"]);
+            },
         },
     }
     

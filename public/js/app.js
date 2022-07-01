@@ -5453,6 +5453,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -5521,6 +5523,9 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
           }
         }, _callee);
       }))();
+    },
+    mounted: function mounted() {
+      var autocomplete = new google.maps.places.Autocomplete(this.$refs["origin"]);
     }
   }
 });
@@ -39813,6 +39818,11 @@ var render = function () {
                   },
                 })
               : _vm._e(),
+            _vm._v(" "),
+            _c("input", {
+              ref: "origin",
+              attrs: { type: "text", placeholder: "Origin" },
+            }),
             _vm._v(" "),
             _c(
               "button",
