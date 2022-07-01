@@ -60,10 +60,10 @@
             </div>
             <div class="cards">
                 @isset($propertyData)     
-                    @foreach ($propertyData as $address => $details)
+                    @foreach ($propertyData as $key => $details)
                         <div class="resultCard">
                             <div class="card-body">
-                                <h3 class="card-title">{{ $address }}</h3>
+                                <h3 class="card-title">{{ $details['address'] }}</h3>
                                 @if (isset($details['propertyInfo']))
                                     <div class="propertyDetails">               
                                         @foreach ($details['propertyInfo'] as $feature)   

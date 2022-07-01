@@ -221,12 +221,6 @@ class ScraperController extends Controller
         //     "sold_properties":128,
         // }      
 
-        $propertyData = $this->results;
-        $investorMetrics = $this->investorMetrics;
-        $numberOfBeds = $this->numberOfBeds;
-        $searchTerms = $this->searchTerms;
-
-        // return $this->results;
 
         // Remove broken info 
 
@@ -243,9 +237,10 @@ class ScraperController extends Controller
         $this->results['address'] = $keys[$bestMatch];
         
 
-        return $this->results;
-
-
+        $propertyData = $this->results;
+        $investorMetrics = $this->investorMetrics;
+        $numberOfBeds = $this->numberOfBeds;
+        $searchTerms = $this->searchTerms;
 
 
         // return [$investorMetrics, $numberOfBeds];
