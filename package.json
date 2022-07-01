@@ -27,6 +27,7 @@
         "epic-spinners": "^1.1.0",
         "jquery": "^3.6.0",
         "vform": "^2.1.2",
-        "vue-loading-overlay": "^3.4.2"
+        "vue-loading-overlay": "^3.4.2",
+        "vue-toastify": "^1.8.1"
     }
 }

@@ -53,7 +53,12 @@
     import 'vue-loading-overlay/dist/vue-loading.css';
     import '../../css/app.css';
     import Form from 'vform';
+    import VueToastify from "vue-toastify";
 
+    Vue.use(VueToastify, {
+        position: "top-right"
+    });
+    
     window.$ = window.jQuery = require('jquery')
 
     export default {
@@ -90,6 +95,7 @@
             },
             async submit () {
                 // this.methods.doAjax();
+                this.$vToastify.success("Submitted");
                 window.location.href = '/results?' + $.param({
                     streetNumber: this.form.streetNumber, 
                     unitNumber: this.form.unitNumber, 
