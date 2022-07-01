@@ -197,6 +197,8 @@ class ScraperController extends Controller
                     $this->numberOfBeds = "ALL";
                 }
             } 
+
+            return $this->investorMetrics;
     
             if(isset($this->searchTerms['unitNumber'])) {
                 $this->investorMetrics = $response["{$suburb}-{$this->searchTerms['postCode']}"]["property_types"]["UNIT"]["bedrooms"][$this->numberOfBeds];
