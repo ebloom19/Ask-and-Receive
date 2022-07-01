@@ -90,6 +90,7 @@
                 fullPage: true,
                 streetTypes: ['Alley', 'Arcade', 'Avenue', 'Boulevard', 'Bypass', 'Circuit', 'Close', 'Corner', 'Court', 'Crescent', 'Cul-de-sac', 'Drive', 'Esplanade', 'Green', 'Grove', 'Highway', 'Junction', 'Lane', 'Link', 'Mews', 'Parade', 'Place', 'Ridge', 'Road', 'Square', 'Street', 'Terrace'],
                 states: ["NSW", "VIC", "QLD", "TAS", "SA", "WA", "NT", "ACT"],
+                address: '',
                 form: new Form({
                     streetNumber: '',
                     unitNumber: '',
@@ -97,7 +98,7 @@
                     streetType: '',
                     suburb: '',
                     state: '',
-                    postCode: ''
+                    postCode: '',
                 }),
             }
         },
@@ -128,6 +129,9 @@
                     postCode: this.form.postCode
                 });
                 // const response = await this.form.post('/results');
+            },
+            getAddressData: function (addressData, placeResultData, id) {
+                this.address = addressData;
             },
         },
     }

@@ -5474,6 +5474,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
       fullPage: true,
       streetTypes: ['Alley', 'Arcade', 'Avenue', 'Boulevard', 'Bypass', 'Circuit', 'Close', 'Corner', 'Court', 'Crescent', 'Cul-de-sac', 'Drive', 'Esplanade', 'Green', 'Grove', 'Highway', 'Junction', 'Lane', 'Link', 'Mews', 'Parade', 'Place', 'Ridge', 'Road', 'Square', 'Street', 'Terrace'],
       states: ["NSW", "VIC", "QLD", "TAS", "SA", "WA", "NT", "ACT"],
+      address: '',
       form: new vform__WEBPACK_IMPORTED_MODULE_3__["default"]({
         streetNumber: '',
         unitNumber: '',
@@ -5526,6 +5527,9 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
           }
         }, _callee);
       }))();
+    },
+    getAddressData: function getAddressData(addressData, placeResultData, id) {
+      this.address = addressData;
     }
   }
 });
