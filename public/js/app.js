@@ -10661,7 +10661,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n    font-family: 'Nunito', sans-serif;\n    color: black;\n}\n\n.mainContainer {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n\nform {\n    padding: 20px;\n    background-color: #85FFBD;\n    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);\n    border-radius: 5px;\n    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\n    width: 70vw;\n}\n\nform > .form-group {\n    margin: 15px;\n}\n\n.form-group > label {\n    margin: 0 10px;\n}\n\n.form-group > button {\n    margin: 0 10px;\n}\n\n.btn-custom {\n    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n    font-family: 'Montserrat', sans-serif;\n    color: black;\n}\n\n.mainContainer {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n}\n\nform {\n    padding: 20px;\n    background-color: #85FFBD;\n    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);\n    border-radius: 5px;\n    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\n    width: 75vw;\n}\n\nform > .form-group {\n    margin: 15px;\n}\n\n.form-group > label {\n    margin: 0 10px;\n}\n\n.form-group > button {\n    margin: 0 10px;\n}\n\n.btn-custom {\n    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
