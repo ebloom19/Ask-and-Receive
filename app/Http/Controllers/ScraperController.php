@@ -84,7 +84,11 @@ class ScraperController extends Controller
             "postCode"=>$postCode
         );
 
-        $this->focusAddress = "{$streetNumber} ";
+        if (isset($unitNumber)) {
+            $this->focusAddress = "{$unitNumber}/{$streetNumber} ";
+        } else {
+            $this->focusAddress = "{$streetNumber} ";
+        }
 
         $client = new Client();
         $url = "https://www.oldlistings.com.au/real-estate/{$state}/{$suburb}/{$postCode}/buy/1/{$streetName}";
