@@ -10,21 +10,12 @@
                 <label for="streetNumber">Street Number</label>
                 <input type="text" name="streetNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
-            </div>
-
-            <div class="form-group">
                 <label for="unitNumber">Unit Number</label>
                 <input type="text" name="unitNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('unitNumber')" v-html="form.errors.get('unitNumber')" />
-            </div>
-
-            <div class="form-group">
                 <label for="streetName">Street Name</label>
                 <input type="text" name="streetName" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetName')" v-html="form.errors.get('streetName')" />
-            </div>
-
-            <div class="form-group">
                 <label for="streetType">Street Type</label>
                 <select name="streetType" v-model="form.streetType">
                     <option v-for="item in streetTypes" :key="item">
