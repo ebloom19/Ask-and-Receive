@@ -6,13 +6,26 @@
                  :is-full-page="fullPage"/>
 
         <form @submit.prevent="submit" @keydown="form.onKeydown($event)">
-            <div class="formMain">
-                <input type="text" name="streetNumber" v-model="form.streetNumber" placeholder="Street Number">
+            <div class="form-group">
+                <label for="streetNumber">Street Number</label>
+                <input type="text" name="streetNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
-                <input type="number" name="unitNumber" v-model="form.unitNumber" placeholder="Unit Number">
+            </div>
+
+            <div class="form-group">
+                <label for="unitNumber">Unit Number</label>
+                <input type="text" name="unitNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('unitNumber')" v-html="form.errors.get('unitNumber')" />
-                <input type="text" name="streetName" v-model="form.streetName" placeholder="Street Name">
+            </div>
+
+            <div class="form-group">
+                <label for="streetName">Street Name</label>
+                <input type="text" name="streetName" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetName')" v-html="form.errors.get('streetName')" />
+            </div>
+
+            <div class="form-group">
+                <label for="streetType">Street Type</label>
                 <select name="streetType" v-model="form.streetType">
                     <option v-for="item in streetTypes" :key="item">
                         {{ item }}
@@ -21,20 +34,29 @@
                 <div v-if="form.errors.has('streetType')" v-html="form.errors.get('streetType')" />
             </div>
 
-            <div class="formMain">
-                <input type="text" name="suburb" v-model="form.suburb" placeholder="Suburb">
+            <div class="form-group">
+                <label for="suburb">Suburb</label>
+                <input type="text" name="suburb" v-model="form.streetNumber">
                 <div v-if="form.errors.has('suburb')" v-html="form.errors.get('suburb')" />
+            </div>
 
+            <div class="form-group">
+                <label for="state">State</label>
                 <select name="state" v-model="form.state">
                     <option v-for="st in states" :key="st" >{{ st }}</option>
                 </select>
                 <div v-if="form.errors.has('state')" v-html="form.errors.get('state')" />
-
-                <input type="number" name="postCode" v-model="form.postCode" placeholder="Post Code">
-                <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
-
-                <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button>
             </div>
+
+            <div class="form-group">
+                <label for="postCode">Post Code</label>
+                <select name="postCode" v-model="form.state">
+                    <option v-for="st in states" :key="st" >{{ st }}</option>
+                </select>
+                <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
+            </div>
+
+            <button type="submit" :disabled="form.busy" class="btn btn-primary">Submit</button>
         </form>
 
     </div>
