@@ -206,8 +206,6 @@ class ScraperController extends Controller
             }
         }
         
-        return $this->investorMetrics;
-
         // $data = new PropertyData;
         // $data->property = $this->results;
         // $data->save();
