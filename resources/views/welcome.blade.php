@@ -85,7 +85,7 @@
                                     @endforeach
                                 </div>                                  
                             @endif
-                            <div class="container d-flex flex-row justify-content-between mt-2 mb-5">
+                            <div class="container d-flex flex-row justify-content-between mt-2 mb-5 p-0">
                                 @if (isset($propertyData['listingHistory']))     
                                     <div class="w-40">             
                                         <h4 class="card-subtitle mb-2 text-muted">Sale Listing History</h4>

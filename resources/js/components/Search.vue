@@ -24,7 +24,7 @@
                 </select>
                 <div v-if="form.errors.has('streetType')" v-html="form.errors.get('streetType')" />
             </div> -->
-            <div class="form-group d-flex flex-row align-items-center">
+            <div class="form-group d-flex flex-row align-items-center flex-wrap">
                 <label for="streetNumber">Street Number</label>
                 <input type="text" name="streetNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />

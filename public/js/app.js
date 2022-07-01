@@ -39545,7 +39545,10 @@ var render = function () {
         [
           _c(
             "div",
-            { staticClass: "form-group d-flex flex-row align-items-center" },
+            {
+              staticClass:
+                "form-group d-flex flex-row align-items-center flex-wrap",
+            },
             [
               _c("label", { attrs: { for: "streetNumber" } }, [
                 _vm._v("Street Number"),
