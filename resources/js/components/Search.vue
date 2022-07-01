@@ -6,7 +6,25 @@
                  :is-full-page="fullPage"/>
 
         <form @submit.prevent="submit" @keydown="form.onKeydown($event)">
-            <div class="form-group d-flex flex-row align-items-center">
+            <div v-if="$isMobile()" class="form-group">
+                <label for="streetNumber">Street Number</label>
+                <input type="text" name="streetNumber" v-model="form.streetNumber">
+                <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
+                <label for="unitNumber">Unit Number</label>
+                <input type="text" name="unitNumber" v-model="form.unitNumber">
+                <div v-if="form.errors.has('unitNumber')" v-html="form.errors.get('unitNumber')" />
+                <label for="streetName">Street Name</label>
+                <input type="text" name="streetName" v-model="form.streetName">
+                <div v-if="form.errors.has('streetName')" v-html="form.errors.get('streetName')" />
+                <label for="streetType">Street Type</label>
+                <select name="streetType" v-model="form.streetType">
+                    <option v-for="item in streetTypes" :key="item">
+                        {{ item }}
+                    </option>
+                </select>
+                <div v-if="form.errors.has('streetType')" v-html="form.errors.get('streetType')" />
+            </div>
+            <div v-else class="form-group d-flex flex-row align-items-center">
                 <label for="streetNumber">Street Number</label>
                 <input type="text" name="streetNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
@@ -54,11 +72,15 @@
     import '../../css/app.css';
     import Form from 'vform';
     import VueToastify from "vue-toastify";
+    import VueMobileDetection from 'vue-mobile-detection';
+
 
     Vue.use(VueToastify, {
         position: "top-right"
     });
-    
+
+    Vue.use(VueMobileDetection);
+
     window.$ = window.jQuery = require('jquery')
 
     export default {
