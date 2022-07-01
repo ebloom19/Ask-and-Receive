@@ -1,12 +1,12 @@
 <template>
-    <div class="vld-parent">
+    <div class="container-fluid">
         <loading v-model:active="isLoading"
                  :can-cancel="true"
                  :on-cancel="onCancel"
                  :is-full-page="fullPage"/>
 
         <form @submit.prevent="submit" @keydown="form.onKeydown($event)">
-            <div class="form-group">
+            <div class="form-group d-flex flex-row align-items-center">
                 <label for="streetNumber">Street Number</label>
                 <input type="text" name="streetNumber" v-model="form.streetNumber">
                 <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
