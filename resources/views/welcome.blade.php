@@ -69,15 +69,15 @@
                                         @foreach ($details['propertyInfo'] as $feature)    
                                             <div class="d-flex flex-row">
                                                 @if (str_contains($feature, "Bed"))                                                    
-                                                    <i class="fas fa-bed-front"></i>
+                                                <i class="fas fa-bed"></i>
                                                 @endif
                                                 @if (str_contains($feature, "Bath"))                                                    
-                                                    <i class="fas fa-bath"></i>
+                                                <i class="fas fa-bath"></i>
                                                 @endif
-                                                @if (str_contains($feature, "Bath"))                                                    
-                                                    <i class="fas fa-car"></i>
+                                                @if (str_contains($feature, "Car"))                                                    
+                                                <i class="fas fa-car"></i>
                                                 @endif
-                                                <p class="card-text">{{ $feature }}</p>
+                                                <p class="card-text ml-1">{{ (int)filter_var($feature, FILTER_SANITIZE_NUMBER_INT) }}</p>
                                             </div>              
                                         @endforeach
                                     </div>                                  
