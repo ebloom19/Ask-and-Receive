@@ -25,43 +25,57 @@
                 <div v-if="form.errors.has('streetType')" v-html="form.errors.get('streetType')" />
             </div> -->
             <div class="form-group d-flex flex-row align-items-center flex-wrap">
-                <label for="streetNumber">Street Number</label>
-                <input type="text" name="streetNumber" v-model="form.streetNumber">
-                <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
-                <label for="unitNumber">Unit Number</label>
-                <input type="text" name="unitNumber" v-model="form.unitNumber">
-                <div v-if="form.errors.has('unitNumber')" v-html="form.errors.get('unitNumber')" />
-                <label for="streetName">Street Name</label>
-                <input type="text" name="streetName" v-model="form.streetName">
-                <div v-if="form.errors.has('streetName')" v-html="form.errors.get('streetName')" />
-                <label for="streetType">Street Type</label>
-                <select name="streetType" v-model="form.streetType">
-                    <option v-for="item in streetTypes" :key="item">
-                        {{ item }}
-                    </option>
-                </select>
-                <div v-if="form.errors.has('streetType')" v-html="form.errors.get('streetType')" />
+                <div class="d-flex flex-row m-1">
+                    <label for="streetNumber" class="m-2">Street Number</label>
+                    <input type="text" name="streetNumber" class="numberInput" v-model="form.streetNumber">
+                    <div v-if="form.errors.has('streetNumber')" v-html="form.errors.get('streetNumber')" />
+                </div>
+                <div class="d-flex flex-row m-1">
+                    <label for="unitNumber" class="m-2">Unit Number</label>
+                    <input type="text" name="unitNumber" class="numberInput" v-model="form.unitNumber">
+                    <div v-if="form.errors.has('unitNumber')" v-html="form.errors.get('unitNumber')" />
+                </div>
+                <div class="d-flex flex-row m-1">
+                    <label for="streetName" class="m-2">Street Name</label>
+                    <input type="text" name="streetName" v-model="form.streetName">
+                    <div v-if="form.errors.has('streetName')" v-html="form.errors.get('streetName')" />
+                </div>
+                <div class="d-flex flex-row m-1">
+                    <label for="streetType" class="m-2">Street Type</label>
+                    <select name="streetType" v-model="form.streetType">
+                        <option v-for="item in streetTypes" :key="item">
+                            {{ item }}
+                        </option>
+                    </select>
+                    <div v-if="form.errors.has('streetType')" v-html="form.errors.get('streetType')" />
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="suburb">Suburb</label>
-                <input type="text" name="suburb" v-model="form.suburb">
-                <div v-if="form.errors.has('suburb')" v-html="form.errors.get('suburb')" />
+            <div class="form-group d-flex flex-wrap">
+                <div class="d-flex flex-row m-1">
+                    <label for="suburb" class="m-2">Suburb</label>
+                    <input type="text" name="suburb" v-model="form.suburb">
+                    <div v-if="form.errors.has('suburb')" v-html="form.errors.get('suburb')" />
+                </div>
 
-                <label for="state">State</label>
-                <select name="state" v-model="form.state">
-                    <option v-for="st in states" :key="st" >{{ st }}</option>
-                </select>
-                <div v-if="form.errors.has('state')" v-html="form.errors.get('state')" />
+                <div class="d-flex flex-row m-1">
+                    <label for="state" class="m-2">State</label>
+                    <select name="state" v-model="form.state">
+                        <option v-for="st in states" :key="st" >{{ st }}</option>
+                    </select>
+                    <div v-if="form.errors.has('state')" v-html="form.errors.get('state')" />
+                </div>
 
-                <label for="postCode">Post Code</label>
-                <input type="number" name="postCode" v-model="form.postCode">
-                <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
+                <div class="d-flex flex-row m-1">
+                    <label for="postCode" class="m-2">Post Code</label>
+                    <input type="number" name="postCode" class="numberInput" v-model="form.postCode">
+                    <div v-if="form.errors.has('postCode')" v-html="form.errors.get('postCode')" />
+                </div>
+                <button type="submit" :disabled="form.busy" class="btn btn-custom ml-4">Submit</button>
 
                 <vue-google-autocomplete id="map" classname="form-control" placeholder="Suburb" v-on:placechanged="getAddressData">
                 </vue-google-autocomplete>
 
-                <button type="submit" :disabled="form.busy" class="btn btn-custom">Submit</button>
             </div>
 
         </form>

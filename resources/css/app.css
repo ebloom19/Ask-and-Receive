@@ -32,6 +32,9 @@ form > .form-group {
 }
 
 .btn-custom {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 1px solid grey;
 }
 
+.numberInput {
+    width: 80px;
+}
