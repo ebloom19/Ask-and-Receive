@@ -66,7 +66,7 @@ class ScraperController extends Controller
 
         $this->proxy = env('PROXY');
 
-        $streetNumber = $request->input('streetNumber');
+        $streetNumber = strtoupper($request->input('streetNumber'));
         $unitNumber = $request->input('unitNumber');
         $streetName = strtoupper($request->input('streetName'));
         $streetType = $request->input('streetType');
