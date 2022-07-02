@@ -5478,7 +5478,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 Vue.use((vue_toastify__WEBPACK_IMPORTED_MODULE_4___default()), {
-  position: "top-right"
+  position: "top-right",
+  successDuration: 7000,
+  canTimeout: false
 });
 window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5527,7 +5529,7 @@ window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jqu
             switch (_context.prev = _context.next) {
               case 0:
                 // this.methods.doAjax();
-                _this2.$vToastify.success("Submitted");
+                _this2.$vToastify.success("Loading Results...");
 
                 window.location.href = '/results?' + $.param((_$$param = {
                   streetNumber: _this2.form.streetNumber,

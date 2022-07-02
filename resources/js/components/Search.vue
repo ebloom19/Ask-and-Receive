@@ -92,7 +92,9 @@
     import VueGoogleAutocomplete from "vue-google-autocomplete";
 
     Vue.use(VueToastify, {
-        position: "top-right"
+        position: "top-right",
+        successDuration: 7000,
+        canTimeout: false
     });
 
     window.$ = window.jQuery = require('jquery')
@@ -132,7 +134,7 @@
             },
             async submit () {
                 // this.methods.doAjax();
-                this.$vToastify.success("Submitted");
+                this.$vToastify.success("Loading Results...");
                 window.location.href = '/results?' + $.param({
                     streetNumber: this.form.streetNumber, 
                     unitNumber: this.form.unitNumber, 
