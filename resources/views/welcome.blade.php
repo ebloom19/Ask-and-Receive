@@ -65,7 +65,7 @@
                 @isset($propertyData['propertyInfo'])     
                     <div class="resultCard">
                         <div class="card-body">
-                            <h3 class="card-title">{{ ucwords($propertyData['address']) }}</h3>
+                            <h3 class="card-title">{{ $propertyData['address'] }}</h3>
                             @if (isset($propertyData['propertyInfo']))
                                 <div class="propertyDetails">               
                                     @foreach ($propertyData['propertyInfo'] as $feature)   

@@ -244,7 +244,7 @@ class ScraperController extends Controller
     
             $keys = array_keys($this->results);
             $this->results = $this->results[$keys[$bestMatch]];
-            $this->results['address'] = $keys[$bestMatch];
+            $this->results['address'] = ucwords($keys[$bestMatch]);
         } 
 
         
