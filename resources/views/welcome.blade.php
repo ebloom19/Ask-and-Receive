@@ -124,7 +124,12 @@
                                     <small class="mt-0 m-3"> - for {{$numberOfBeds == "ALL" ? 'all' : "{$numberOfBeds} Bedroom"}}  {{isset($searchTerms['unitNumber']) ? 'Units' : 'Houses'}}</small>
                                 </div>
                                 <p class="card-text">Average Sale Price : ${{ trim(strrev(chunk_split(strrev($investorMetrics['investor_metrics']['median_sold_price']), 3, ','))) }}</p>
-                                <p class="card-text">Average Sale Price in the past 5 years has risen by {{ round($percentage, 2) }}%</p>
+                                @if (round($percentage, 2) > 0)                                    
+                                    <p class="card-text">Average Sale Price in the past 5 years has risen by {{ round($percentage, 2) }}%</p>
+                                @endif
+                                @if (round($percentage, 2) < 0)                                    
+                                    <p class="card-text">Average Sale Price in the past 5 years has declined by {{ abs(round($percentage, 2)) }}%</p>
+                                @endif
                                 <p class="card-text">Average Rent : ${{ $investorMetrics['investor_metrics']['median_rental_price'] }} Weekly</p>
                                 <p class="card-text">Rental Yeild : {{ round((float)$investorMetrics['investor_metrics']['rental_yield'] * 100) }}%</p>
                             @endif
